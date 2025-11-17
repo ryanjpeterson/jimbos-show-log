@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Comes from your .env file
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  username String  @unique
+  password String
+}
+
+model Venue {
+  id        Int       @id @default(autoincrement())
+  name      String
+  slug      String    @unique  // <--- NEW: Must be unique
+  city      String
+  latitude  Decimal   @db.Decimal(9, 6)
+  longitude Decimal   @db.Decimal(10, 6)
+  concerts  Concert[]
+}
+
+model Concert {
+  id          Int         @id @default(autoincrement())
+  type        ConcertType
+  eventName   String?
+  date        DateTime    @db.Timestamptz
+  artist      String
+  artistSlug  String      // <--- NEW: Stores "nine-inch-nails"
+  setlist     String?
+  notes       String?
+  venue       Venue       @relation(fields: [venueId], references: [id])
+  venueId     Int
+}
+
+enum ConcertType {
+  concert
+  festival
+}

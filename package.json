@@ -1,0 +1,16 @@
+{
+  "name": "jimbos-show-log-root",
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    
+    "start:backend": "cd backend && node index.js",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:db": "cd backend && npx prisma dev && npx prisma studio",
+    
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:db\" --names \"SERVER,CLIENT,DB-UI\" --prefix-colors \"blue,magenta,green\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
