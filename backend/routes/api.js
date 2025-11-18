@@ -381,4 +381,95 @@ router.get('/stats', async (req, res) => {
   }
 });
 
+// Import route
+router.post('/import', authMiddleware, async (req, res) => {
+  const { venues = [], concerts = [] } = req.body;
+
+  if (!Array.isArray(venues) || !Array.isArray(concerts)) {
+    return res.status(400).json({ message: "Invalid JSON format: 'venues' and 'concerts' must be arrays." });
+  }
+
+  let importedVenues = 0;
+  let importedConcerts = 0;
+
+  try {
+    // Use a transaction to ensure all or nothing
+    const result = await prisma.$transaction(async (tx) => {
+      
+      // 1. Upsert all Venues first.
+      // 'Upsert' will create new venues or update existing ones based on the slug.
+      for (const venue of venues) {
+        if (!venue.name || !venue.city) {
+          throw new Error('Venue missing required field: name or city.');
+        }
+        const slug = createSlug(venue.name);
+        
+        await tx.venue.upsert({
+          where: { slug: slug },
+          update: {
+            name: venue.name,
+            city: venue.city,
+            latitude: parseFloat(venue.latitude) || 0,
+            longitude: parseFloat(venue.longitude) || 0,
+          },
+          create: {
+            name: venue.name,
+            slug: slug,
+            city: venue.city,
+            latitude: parseFloat(venue.latitude) || 0,
+            longitude: parseFloat(venue.longitude) || 0,
+          }
+        });
+        importedVenues++;
+      }
+
+      // 2. Create Concerts
+      // We must now look up venues by name to get their IDs.
+      for (const concert of concerts) {
+        if (!concert.artist || !concert.date || !concert.venueName) {
+          throw new Error('Concert missing required field: artist, date, or venueName.');
+        }
+
+        // Find the venueId based on the venueName
+        const venueSlug = createSlug(concert.venueName);
+        const foundVenue = await tx.venue.findUnique({
+          where: { slug: venueSlug }
+        });
+
+        if (!foundVenue) {
+          throw new Error(`Venue not found for concert: "${concert.artist}" at "${concert.venueName}". Ensure venue is in the JSON or already in the DB.`);
+        }
+
+        // Create the concert
+        await tx.concert.create({
+          data: {
+            artist: concert.artist,
+            artistSlug: createSlug(concert.artist),
+            date: new Date(concert.date), // Assumes ISO 8601 date string
+            venueId: foundVenue.id,
+            type: concert.type === 'festival' ? 'festival' : 'concert',
+            eventName: concert.eventName,
+            setlist: concert.setlist,
+            notes: concert.notes,
+          }
+        });
+        importedConcerts++;
+      }
+
+      return { importedVenues, importedConcerts };
+    });
+
+    res.status(200).json({
+      message: `Import successful! Added/updated ${result.importedVenues} venues and ${result.importedConcerts} concerts.`,
+    });
+
+  } catch (error) {
+    console.error("Import Error:", error.message);
+    res.status(400).json({ 
+      message: "Import failed. The entire transaction has been rolled back.",
+      error: error.message 
+    });
+  }
+});
+
 module.exports = router;

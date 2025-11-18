@@ -26,6 +26,7 @@ function Navbar() {
           {isAuthenticated ? (
             <>
               <Link to="/create" className="hover:text-gray-300">Create New</Link>
+              <Link to="/admin" className="hover:text-gray-300 font-bold">Admin</Link> {/* <-- ADD THIS LINK */}
               <button onClick={handleLogout} className="hover:text-gray-300">
                 Logout
               </button>

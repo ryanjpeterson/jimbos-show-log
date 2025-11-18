@@ -11,6 +11,7 @@ import EditPage from './pages/EditPage';
 import VenueDetailPage from './pages/VenueDetailPage';
 import ArtistDetailPage from './pages/ArtistDetailPage';
 import StatsPage from './pages/StatsPage';
+import AdminDashboard from './pages/AdminDashboard';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -36,6 +37,14 @@ function App() {
           <Route path="/artists/:slug" element={<ArtistDetailPage />} />
 
           {/* --- Protected Routes --- */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/create"
             element={
