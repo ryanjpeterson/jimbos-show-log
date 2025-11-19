@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL") // Comes from your .env file
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -38,8 +38,8 @@ model Concert {
   notes       String?
   
   // NEW FIELDS
-  imageUrl    String?     // Main hero image
-  gallery     String[]    // Array of strings for gallery URLs
+  imageUrl    String?
+  gallery     String[]
 
   venue       Venue       @relation(fields: [venueId], references: [id])
   venueId     Int

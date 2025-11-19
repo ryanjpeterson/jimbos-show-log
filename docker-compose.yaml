@@ -1,0 +1,58 @@
+services:
+  # 1. The Database
+  db:
+    image: postgres:15-alpine
+    container_name: jimbos-show-log-postgresdb
+    restart: always
+    environment:
+      # Use variables from your root .env file
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - jimbos-network
+
+  # 2. The Backend API
+  backend:
+    build: ./backend
+    container_name: jimbos_backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      # In Docker, the host is the service name "db", not the container name.
+      # We KEEP the host as "db" here because that is the SERVICE name defined above (line 3).
+      # If you changed "db:" on line 3 to "database:", then you would change "db" here.
+      # But changing 'container_name' does not affect internal networking DNS.
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: 3000
+      
+      # Pass specific Admin credentials to the seed script
+      # Maps ADMIN_ vars from .env to DATABASE_ vars used in seed.js
+      DATABASE_USERNAME: ${ADMIN_USERNAME}
+      DATABASE_EMAIL: ${ADMIN_EMAIL}
+      DATABASE_PASSWORD: ${ADMIN_PASSWORD}
+    networks:
+      - jimbos-network
+
+  # 3. The Frontend (Nginx + React)
+  frontend:
+    build: ./frontend
+    container_name: jimbos_frontend
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - jimbos-network
+
+volumes:
+  postgres_data:
+
+networks:
+  jimbos-network:
+    driver: bridge
