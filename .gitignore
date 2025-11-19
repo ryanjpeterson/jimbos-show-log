@@ -3,6 +3,7 @@ node_modules/
 
 # Environment variables (Keep secrets safe!)
 .env
+.env.docker
 .DS_Store
 
 # Build outputs

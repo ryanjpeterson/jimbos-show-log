@@ -39,18 +39,6 @@ router.get('/concerts/:id', async (req, res) => {
   }
 });
 
-// NEW: Get Concert by Artist Slug + Date (Composite "Slug" concept)
-// Since artistSlug isn't unique per concert, we might need a truly unique slug for concerts.
-// For simplicity in this request, let's assume we find by ID for now, or add a unique slug to Concert.
-// Recommendation: Let's use ID for the detail page route '/concerts/:id' for simplicity unless we add a unique slug to the Concert model.
-// Wait, user asked for "/concert/slug". Let's add a unique slug to Concert model in next iteration or just use ID in URL for now but make it look pretty?
-// Actually, the user asked for `/concert/slug`. Let's modify the schema again to add a unique `slug` to Concert.
-// Since I already provided the schema above without it, let's stick to using the ID for the detail page but maybe masking it or just use the ID route we have.
-// CORRECTION: I will use the existing `/concerts/:id` route logic but ensure the frontend uses it correctly.
-// If the user *really* wants a slug like `/concerts/lcd-soundsystem-msg-2024`, we'd need a migration. 
-// Let's stick to ID for stability, but if we MUST use slug, we need to add it.
-// Let's stick to the ID-based route `GET /concerts/:id` which already exists above.
-
 router.get('/venues', async (req, res) => {
   try {
     const venues = await prisma.venue.findMany({ orderBy: { name: 'asc' } });
@@ -274,11 +262,95 @@ router.delete('/delete/:type/:id', authMiddleware, async (req, res) => {
   }
 });
 
+// ==========================================
+// IMPORT ROUTE (FIXED)
+// ==========================================
 router.post('/import', authMiddleware, async (req, res) => {
-    // ... (Keep your existing import code from previous response here) ...
-    // Ensure you update the create step in import to include imageUrl/gallery if you add it to the JSON template
-    // For brevity, I'm omitting the full import block, but make sure it stays!
-    res.status(501).json({message: "Import functionality preserved but hidden in this snippet"});
+  const { venues = [], concerts = [] } = req.body;
+
+  if (!Array.isArray(venues) || !Array.isArray(concerts)) {
+    return res.status(400).json({ message: "Invalid JSON format: 'venues' and 'concerts' must be arrays." });
+  }
+
+  let importedVenues = 0;
+  let importedConcerts = 0;
+
+  try {
+    // Use a transaction to ensure all or nothing
+    const result = await prisma.$transaction(async (tx) => {
+      
+      // 1. Upsert all Venues first.
+      for (const venue of venues) {
+        if (!venue.name || !venue.city) {
+          throw new Error('Venue missing required field: name or city.');
+        }
+        const slug = createSlug(venue.name);
+        
+        await tx.venue.upsert({
+          where: { slug: slug },
+          update: {
+            name: venue.name,
+            city: venue.city,
+            latitude: parseFloat(venue.latitude) || 0,
+            longitude: parseFloat(venue.longitude) || 0,
+          },
+          create: {
+            name: venue.name,
+            slug: slug,
+            city: venue.city,
+            latitude: parseFloat(venue.latitude) || 0,
+            longitude: parseFloat(venue.longitude) || 0,
+          }
+        });
+        importedVenues++;
+      }
+
+      // 2. Create Concerts
+      for (const concert of concerts) {
+        if (!concert.artist || !concert.date || !concert.venueName) {
+          throw new Error('Concert missing required field: artist, date, or venueName.');
+        }
+
+        // Find the venueId based on the venueName
+        const venueSlug = createSlug(concert.venueName);
+        const foundVenue = await tx.venue.findUnique({
+          where: { slug: venueSlug }
+        });
+
+        if (!foundVenue) {
+          throw new Error(`Venue not found for concert: "${concert.artist}" at "${concert.venueName}". Ensure venue is in the JSON or already in the DB.`);
+        }
+
+        // Create the concert
+        await tx.concert.create({
+          data: {
+            artist: concert.artist,
+            artistSlug: createSlug(concert.artist),
+            date: new Date(concert.date),
+            venueId: foundVenue.id,
+            type: concert.type === 'festival' ? 'festival' : 'concert',
+            eventName: concert.eventName,
+            setlist: concert.setlist,
+            notes: concert.notes,
+          }
+        });
+        importedConcerts++;
+      }
+
+      return { importedVenues, importedConcerts };
+    });
+
+    res.status(200).json({
+      message: `Import successful! Added/updated ${result.importedVenues} venues and ${result.importedConcerts} concerts.`,
+    });
+
+  } catch (error) {
+    console.error("Import Error:", error.message);
+    res.status(400).json({ 
+      message: "Import failed. The entire transaction has been rolled back.",
+      error: error.message 
+    });
+  }
 });
 
 module.exports = router;
