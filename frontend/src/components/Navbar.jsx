@@ -8,31 +8,45 @@ function Navbar() {
 
   const handleLogout = () => {
     logout();
-    navigate('/login'); // Redirect to login after logout
+    navigate('/');
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className="bg-gray-800 text-white p-4 shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold">
-          Jimbo's Show Log
+        <Link to="/" className="text-xl font-black tracking-tight flex items-center gap-2 hover:text-gray-200 transition">
+          <span>🎸</span> Jimbo's Show Log
         </Link>
         
-        <div className="space-x-4">
-          <Link to="/" className="hover:text-gray-300">Home</Link>
-          <Link to="/stats" className="hover:text-gray-300">Stats</Link>
+        <div className="flex items-center space-x-6 text-sm font-medium">
+          <Link to="/" className="hover:text-blue-300 transition">Home</Link>
+          <Link to="/stats" className="hover:text-blue-300 transition">Stats</Link>
           
-          {/* Conditional links based on auth state */}
+          {/* Auth Indicator & Links */}
           {isAuthenticated ? (
             <>
-              <Link to="/create" className="hover:text-gray-300">Create New</Link>
-              <Link to="/admin" className="hover:text-gray-300 font-bold">Admin</Link> {/* <-- ADD THIS LINK */}
-              <button onClick={handleLogout} className="hover:text-gray-300">
-                Logout
+              <div className="h-4 w-px bg-gray-600 mx-2"></div> {/* Divider */}
+              <Link to="/create" className="hover:text-green-400 transition">Create</Link>
+              <Link to="/admin" className="hover:text-purple-400 transition">Admin</Link>
+              <button 
+                onClick={handleLogout} 
+                className="flex items-center gap-1 text-red-400 hover:text-red-300 transition ml-2"
+                title="Logout"
+              >
+                <span>🔓</span> Logout
               </button>
             </>
           ) : (
-            <Link to="/login" className="hover:text-gray-300">Admin Login</Link>
+            <>
+              <div className="h-4 w-px bg-gray-600 mx-2"></div> {/* Divider */}
+              <Link 
+                to="/login" 
+                className="flex items-center gap-1 text-gray-400 hover:text-white transition"
+                title="Admin Login"
+              >
+                <span>🔒</span> Login
+              </Link>
+            </>
           )}
         </div>
       </div>
