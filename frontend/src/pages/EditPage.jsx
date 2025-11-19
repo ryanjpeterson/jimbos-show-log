@@ -24,6 +24,7 @@ function EditPage() {
         }
 
         // 2. Fetch the existing data for the item we are editing
+        // Note: The API routes are slightly different for concerts vs venues
         const endpoint = type === 'concert' 
           ? `/api/concerts/${id}` 
           : `/api/venues/id/${id}`;
@@ -38,7 +39,7 @@ function EditPage() {
           data.date = new Date(data.date).toISOString().split('T')[0];
         }
         
-        // Ensure gallery is an array
+        // Ensure gallery is an array if it doesn't exist
         if (type === 'concert' && !data.gallery) {
           data.gallery = [];
         }

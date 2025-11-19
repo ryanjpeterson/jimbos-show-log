@@ -18,6 +18,7 @@ function ConcertCard({ concert, onConcertDeleted }) {
         await axios.delete(`/api/delete/concert/${concert.id}`);
         onConcertDeleted(concert.id);
       } catch (err) {
+        console.log(err);
         alert('Failed to delete concert.');
       }
     }
