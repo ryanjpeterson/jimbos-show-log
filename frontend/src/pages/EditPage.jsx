@@ -83,18 +83,39 @@ function EditPage() {
       // 1. Create a copy of the form data so we don't mutate state
       const payload = { ...formData };
 
-      // 2. CLEANUP: Remove the nested 'venue' object.
-      if (payload.venue) {
-        delete payload.venue;
+      // 2. CONCERT CLEANUP
+      if (type === 'concert') {
+        payload.type = payload.type || 'concert';
+        if (payload.venueId) payload.venueId = parseInt(payload.venueId);
+        // Ensure gallery is array
+        if (!payload.gallery) payload.gallery = [];
+        delete payload.venue; // Remove nested object if present
       }
 
-      // 3. Ensure venueId is an integer (if it exists)
-      if (payload.venueId) {
-        payload.venueId = parseInt(payload.venueId);
-      }
+      // 3. VENUE CLEANUP
+      if (type === 'venue') {
+        // Ensure lat/long are Floats, default to 0.0 if missing/invalid
+        payload.latitude = payload.latitude ? parseFloat(payload.latitude) : 0.0;
+        payload.longitude = payload.longitude ? parseFloat(payload.longitude) : 0.0;
 
-      // 4. Ensure 'type' is set (default to 'concert' if missing)
-      payload.type = payload.type || 'concert';
+        // Ensure name is present
+        if (!payload.name) {
+          alert("Venue name is required");
+          return;
+        }
+
+        // REMOVE CONCERT-SPECIFIC FIELDS
+        delete payload.gallery;
+        delete payload.imageUrl; 
+        delete payload.artist;
+        delete payload.date;
+        delete payload.venueId;
+        delete payload.type;
+        delete payload.eventName;
+        delete payload.setlist;
+        delete payload.notes;
+        delete payload.concerts; // Important for venues which might have loaded this relation
+      }
 
       // 5. Send the clean payload
       await axios.put(`/api/edit/${type}/${id}`, payload);
@@ -187,6 +208,8 @@ function EditPage() {
         <div className="space-y-4">
           <input name="name" value={formData.name || ''} onChange={handleChange} placeholder="Venue Name" className="border p-3 rounded w-full" required />
           <input name="city" value={formData.city || ''} onChange={handleChange} placeholder="City" className="border p-3 rounded w-full" required />
+          {/* NEW FIELD */}
+          <input name="address" value={formData.address || ''} onChange={handleChange} placeholder="Address (Optional)" className="border p-3 rounded w-full" />
           
           <div className="grid grid-cols-2 gap-4">
             <input name="latitude" type="number" step="any" value={formData.latitude || ''} onChange={handleChange} placeholder="Latitude" className="border p-3 rounded w-full" required />

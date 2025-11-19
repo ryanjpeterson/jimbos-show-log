@@ -40,7 +40,7 @@ function CreatePage() {
     setFormData({ ...formData, gallery: newGallery });
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
@@ -170,6 +170,9 @@ const handleSubmit = async (e) => {
         <div className="space-y-4">
             <input name="name" onChange={handleChange} placeholder="Venue Name *" className="border p-3 rounded w-full" required />
             <input name="city" onChange={handleChange} placeholder="City *" className="border p-3 rounded w-full" required />
+            {/* NEW FIELD */}
+            <input name="address" onChange={handleChange} placeholder="Address (Optional)" className="border p-3 rounded w-full" />
+            
             <div className="grid grid-cols-2 gap-4">
                 <input name="latitude" type="number" step="any" onChange={handleChange} placeholder="Lat *" className="border p-3 rounded w-full" required />
                 <input name="longitude" type="number" step="any" onChange={handleChange} placeholder="Long *" className="border p-3 rounded w-full" required />

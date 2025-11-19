@@ -32,17 +32,22 @@ function VenueDetailPage() {
       <div className="bg-gray-100 p-6 rounded-lg shadow-sm mb-8">
         <h1 className="text-4xl font-bold text-gray-800">{venue.name}</h1>
         <h2 className="text-xl text-gray-600 mt-2">{venue.city}</h2>
+        
+        {/* Display Address if available */}
+        {venue.address && (
+          <p className="text-gray-600 mt-1">{venue.address}</p>
+        )}
 
         {isAuthenticated && (
           <Link 
             to={`/edit/venue/${venue.id}`}
-            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded shadow-sm text-sm font-bold"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded shadow-sm text-sm font-bold mt-4 inline-block"
           >
             Edit Venue
           </Link>
         )}
 
-        <div className="text-sm text-gray-500 mt-1">
+        <div className="text-sm text-gray-500 mt-4">
           Lat: {venue.latitude} / Long: {venue.longitude}
         </div>
         
