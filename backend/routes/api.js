@@ -353,4 +353,58 @@ router.post('/import', authMiddleware, async (req, res) => {
   }
 });
 
+router.get('/export', authMiddleware, async (req, res) => {
+  try {
+    // 1. Fetch all venues
+    const venues = await prisma.venue.findMany({
+      orderBy: { name: 'asc' }
+    });
+
+    // 2. Fetch all concerts with venue details
+    const concerts = await prisma.concert.findMany({
+      include: { venue: true },
+      orderBy: { date: 'asc' }
+    });
+
+    // 3. Transform Concerts to match Import Format
+    // The import format expects "venueName" instead of a nested venue object.
+    // It also expects specific field names.
+    const formattedConcerts = concerts.map(c => ({
+      artist: c.artist,
+      date: c.date, // ISO format is standard for JSON
+      venueName: c.venue.name, // Flatten relation
+      type: c.type,
+      eventName: c.eventName,
+      setlist: c.setlist,
+      notes: c.notes,
+      imageUrl: c.imageUrl, // Include image fields if they exist
+      gallery: c.gallery
+    }));
+
+    // 4. Transform Venues to match Import Format
+    // (Prisma output is usually already close, but let's be explicit)
+    const formattedVenues = venues.map(v => ({
+      name: v.name,
+      city: v.city,
+      latitude: v.latitude,
+      longitude: v.longitude
+    }));
+
+    // 5. Construct Final JSON
+    const exportData = {
+      venues: formattedVenues,
+      concerts: formattedConcerts
+    };
+
+    // 6. Send as downloadable JSON file
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Disposition', 'attachment; filename=jimbos-show-log-export.json');
+    res.json(exportData);
+
+  } catch (error) {
+    console.error("Export Error:", error);
+    res.status(500).json({ message: "Failed to export data", error: error.message });
+  }
+});
+
 module.exports = router;

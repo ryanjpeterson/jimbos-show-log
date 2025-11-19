@@ -1,13 +1,19 @@
 import React, { useState, useCallback } from 'react';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext'; // Import auth context to get token if needed (axios interceptor usually handles it)
 
 function AdminDashboard() {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [exportLoading, setExportLoading] = useState(false); // New state for export
 
-  // Handle file drop
+  // ... existing handleDrop, handleDragOver, handleDragLeave ...
+  // (Keep your existing drag-and-drop logic here)
+  const handleDragOver = (e) => { e.preventDefault(); e.stopPropagation(); setIsDragging(true); };
+  const handleDragLeave = (e) => { e.preventDefault(); e.stopPropagation(); setIsDragging(false); };
+  
   const handleDrop = useCallback(async (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -20,14 +26,9 @@ function AdminDashboard() {
     if (file && file.type === 'application/json') {
       setLoading(true);
       try {
-        // 1. Read the file as text
         const text = await file.text();
-        // 2. Parse the text into JSON
         const data = JSON.parse(text);
-
-        // 3. Post the JSON data (not the file) to the backend
         const res = await axios.post('/api/import', data);
-        
         setSuccess(res.data.message);
       } catch (err) {
         if (err instanceof SyntaxError) {
@@ -43,72 +44,122 @@ function AdminDashboard() {
     }
   }, []);
 
-  // Prevent default browser behavior for drag events
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(true);
-  };
+  // NEW: Handle Export
+  const handleExport = async () => {
+    setExportLoading(true);
+    setError(null);
+    try {
+      // Request the export endpoint
+      const response = await axios.get('/api/export', {
+        responseType: 'blob', // Important: Handle response as a binary blob
+      });
 
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
+      // Create a link element to trigger the download
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      
+      // Use date in filename
+      const dateStr = new Date().toISOString().split('T')[0];
+      link.setAttribute('download', `jimbos-show-log-backup-${dateStr}.json`);
+      
+      document.body.appendChild(link);
+      link.click();
+      
+      // Cleanup
+      link.remove();
+      window.URL.revokeObjectURL(url);
+      setSuccess("Export successful! Check your downloads.");
+    } catch (err) {
+      console.error("Export failed", err);
+      setError("Failed to export database.");
+    } finally {
+      setExportLoading(false);
+    }
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+    <div className="container mx-auto p-4 max-w-4xl">
+      <h1 className="text-3xl font-bold mb-8 text-gray-800">Admin Dashboard</h1>
       
-      <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
-        <h2 className="text-xl font-bold mb-4">Import Data</h2>
-        <p className="text-gray-600 mb-4">
-          Drop a valid <code>.json</code> file into the area below to bulk-import venues and concerts. 
-          Data is transactional: if one entry fails, the entire import is rolled back.
-        </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        <div 
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          className={`border-4 border-dashed rounded-lg p-12 text-center transition-colors
-            ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300 bg-gray-50'}
-          `}
-        >
-          {loading ? (
-            <p className="text-lg font-semibold text-gray-700">Importing...</p>
-          ) : (
-            <p className="text-lg font-semibold text-gray-700">
-              {isDragging ? "Release to upload" : "Drag & drop your JSON file here"}
-            </p>
-          )}
+        {/* LEFT COLUMN: IMPORT */}
+        <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
+          <h2 className="text-xl font-bold mb-4 flex items-center">
+            <span className="text-2xl mr-2">📥</span> Import Data
+          </h2>
+          <p className="text-gray-600 mb-4 text-sm">
+            Drop a valid <code>.json</code> file below to bulk-import venues and concerts. 
+            Existing entries with matching slugs/names will be updated.
+          </p>
+          
+          <div 
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            className={`border-4 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer
+              ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300 bg-gray-50 hover:bg-gray-100'}
+            `}
+          >
+            {loading ? (
+              <p className="text-lg font-semibold text-gray-700 animate-pulse">Importing...</p>
+            ) : (
+              <div>
+                <p className="text-lg font-semibold text-gray-700">
+                  {isDragging ? "Release to upload" : "Drag & drop JSON here"}
+                </p>
+                <p className="text-xs text-gray-400 mt-2">or click to select (future)</p>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-gray-100">
+            <p className="text-xs text-gray-500 mb-2">Format Guide:</p>
+            <a 
+              href="/jimbos-show-log-import-template.json" 
+              download
+              className="text-blue-600 text-sm hover:underline font-medium"
+            >
+              Download Template JSON
+            </a>
+          </div>
         </div>
 
-        {/* Status Messages */}
-        {error && (
-          <div className="mt-4 p-4 bg-red-100 text-red-800 rounded-lg">
-            <strong className="font-bold">Error:</strong> {error}
+        {/* RIGHT COLUMN: EXPORT & STATUS */}
+        <div className="space-y-8">
+          
+          {/* EXPORT CARD */}
+          <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
+            <h2 className="text-xl font-bold mb-4 flex items-center">
+              <span className="text-2xl mr-2">📤</span> Export Database
+            </h2>
+            <p className="text-gray-600 mb-6 text-sm">
+              Download a complete backup of your database in JSON format. 
+              This file is compatible with the Import tool.
+            </p>
+            
+            <button 
+              onClick={handleExport}
+              disabled={exportLoading}
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded shadow flex items-center justify-center transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {exportLoading ? (
+                <span>Generatng JSON...</span>
+              ) : (
+                <span>Download Backup (.json)</span>
+              )}
+            </button>
           </div>
-        )}
-        {success && (
-          <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-lg">
-            <strong className="font-bold">Success:</strong> {success}
-          </div>
-        )}
 
-        <div className="mt-6">
-          <h3 className="font-bold text-gray-700">Need the template?</h3>
-          <p className="text-gray-600">
-            Download the official data template to ensure your import is successful.
-          </p>
-          {/* This link assumes you've placed the template in the /public folder */}
-          <a 
-            href="/jimbos-show-log-import-template.json" 
-            download
-            className="inline-block mt-2 bg-gray-700 text-white px-4 py-2 rounded text-sm font-medium hover:bg-gray-800"
-          >
-            Download Template
-          </a>
+          {/* STATUS MESSAGES AREA */}
+          {(error || success) && (
+            <div className={`p-4 rounded-lg shadow ${error ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+              <h3 className="font-bold mb-1">{error ? 'Error' : 'Success'}</h3>
+              <p className="text-sm">{error || success}</p>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
