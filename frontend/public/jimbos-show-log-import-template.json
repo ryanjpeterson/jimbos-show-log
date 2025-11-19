@@ -1,34 +1,4251 @@
 {
   "venues": [
     {
-      "name": "Madison Square Garden",
-      "city": "New York",
-      "latitude": 40.7505,
-      "longitude": -73.9934
+      "name": "Air Canada Centre",
+      "city": "Toronto, ON",
+      "latitude": 43.6434338,
+      "longitude": -79.3790777
     },
     {
-      "name": "The Fillmore",
-      "city": "San Francisco",
-      "latitude": 37.7840,
-      "longitude": -122.4330
+      "name": "Bell Centre",
+      "city": "Montreal, QC",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Banting Memorial High School",
+      "city": "Alliston, ON",
+      "latitude": 44.1551491,
+      "longitude": -79.8584329
+    },
+    {
+      "name": "Molson Canadian Amphitheatre",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Arrow Hall",
+      "city": "Mississauga, ON",
+      "latitude": 43.5896231,
+      "longitude": -79.6443879
+    },
+    {
+      "name": "Mod Club",
+      "city": "Toronto, ON",
+      "latitude": 43.6553688,
+      "longitude": -79.4193467
+    },
+    {
+      "name": "Downsview Park",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Danforth Music Hall",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Sound Empire",
+      "city": "Barrie, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Woodbine Park",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Fort York Garrison Common",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Lee's Palace",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Rogers Centre",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Canadian Tire Centre",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Budweiser Stage",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Rebel",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Phoenix Theatre",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "The Brass Monkey",
+      "city": "Ottawa, ON",
+      "latitude": 45.3253572,
+      "longitude": -75.7798339
+    },
+    {
+      "name": "Dominion Tavern",
+      "city": "Ottawa, ON",
+      "latitude": 45.4279894,
+      "longitude": -75.693853
+    },
+    {
+      "name": "TD Place",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Bronson Theatre",
+      "city": "Ottawa, ON",
+      "latitude": 45.4208777,
+      "longitude": -75.6901106
+    },
+    {
+      "name": "Galerie SAW",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Massey Hall",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "LeBreton Flats",
+      "city": "Ottawa, ON",
+      "latitude": 45.4163962,
+      "longitude": -75.71549
+    },
+    {
+      "name": "Algonquin Commons Theatre",
+      "city": "Ottawa, ON",
+      "latitude": 45.3497003,
+      "longitude": -75.7560047
+    },
+    {
+      "name": "Queen Elizabeth Theatre",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "The Garrison",
+      "city": "Toronto, ON",
+      "latitude": 43.6491534,
+      "longitude": -79.4223361
+    },
+    {
+      "name": "The Opera House",
+      "city": "Toronto, ON",
+      "latitude": 43.6589873,
+      "longitude": -79.3487864
+    },
+    {
+      "name": "Velvet Underground",
+      "city": "Toronto, ON",
+      "latitude": 43.6478352,
+      "longitude": -79.401478
+    },
+    {
+      "name": "History",
+      "city": "Toronto, ON",
+      "latitude": 43.6667034,
+      "longitude": -79.3133062
+    },
+    {
+      "name": "Confederation Park",
+      "city": "Ottawa, ON",
+      "latitude": 45.4223729,
+      "longitude": -75.6916009
+    },
+    {
+      "name": "Rainbow Bistro",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Landsdowne Park",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "The Concert Hall",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Mayfair Theatre",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Irving Plaza",
+      "city": "New York, NY",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Les Foufounes \u00c9lectriques",
+      "city": "Montreal, QC",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Th\u00e9\u00e2tre Beanfield",
+      "city": "Montreal, QC",
+      "latitude": 45.4828925,
+      "longitude": -73.5750666
+    },
+    {
+      "name": "The 27 Club",
+      "city": "Ottawa, ON",
+      "latitude": 45.4279827,
+      "longitude": -75.6939729
+    },
+    {
+      "name": "Parc Jean-Drapeau",
+      "city": "Montreal, QC",
+      "latitude": 45.5138637,
+      "longitude": -73.5343331
+    },
+    {
+      "name": "Stade Olympique",
+      "city": "Montreal, QC",
+      "latitude": 45.5577984,
+      "longitude": -73.5516458
+    },
+    {
+      "name": "Overflow Brewery",
+      "city": "Ottawa, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Place Bell",
+      "city": "Laval, ON",
+      "latitude": 49.8111641,
+      "longitude": -92.4441478
+    },
+    {
+      "name": "Rue des Forges",
+      "city": "Trois-Rivi\u00e8res, QC",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Pavillon des sports Roland-D\u00e9sourdy",
+      "city": "Cowansville, QC",
+      "latitude": 45.2076125,
+      "longitude": -72.7479195
+    },
+    {
+      "name": "Scotiabank Arena",
+      "city": "Toronto, ON",
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    {
+      "name": "Rogers Stadium",
+      "city": "Toronto, ON",
+      "latitude": 43.7461656,
+      "longitude": -79.4692345
+    },
+    {
+      "name": "Kensington Market",
+      "city": "Toronto, ON",
+      "latitude": 43.6552136,
+      "longitude": -79.4022604
+    },
+    {
+      "name": "National Arts Centre",
+      "city": "Ottawa, ON",
+      "latitude": 45.4231956,
+      "longitude": -75.6933452
     }
   ],
   "concerts": [
     {
-      "artist": "LCD Soundsystem",
-      "date": "2024-12-20T21:00:00Z",
-      "venueName": "Madison Square Garden",
+      "artist": "Against Me!",
+      "date": "2008-03-22T00:00:00Z",
+      "venueName": "Air Canada Centre",
       "type": "concert",
-      "eventName": "Winter Tour",
-      "setlist": "https://www.setlist.fm/example",
-      "notes": "Amazing show."
+      "eventName": null,
+      "setlist": null,
+      "notes": "Opened for Foo Fighters"
     },
     {
-      "artist": "My Morning Jacket",
-      "date": "2023-10-31T20:00:00Z",
-      "venueName": "The Fillmore",
+      "artist": "Foo Fighters",
+      "date": "2008-03-22T00:00:00Z",
+      "venueName": "Air Canada Centre",
       "type": "concert",
-      "notes": "Halloween show, they played Thriller."
+      "eventName": null,
+      "setlist": null,
+      "notes": "Played YYZ with Geddy Lee & Alex Lifeson"
+    },
+    {
+      "artist": "Rush",
+      "date": "2008-06-12T00:00:00Z",
+      "venueName": "Bell Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Johnstones",
+      "date": "2010-03-19T00:00:00Z",
+      "venueName": "Banting Memorial High School",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "The Johnstones played Banting and there was way too much crowd killing for a ska band. Date is a guess"
+    },
+    {
+      "artist": "Rush",
+      "date": "2010-07-13T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "A Day to Remember",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "Kid got destroyed in the wall of death. Unforgettable moment. RIP"
+    },
+    {
+      "artist": "Asking Alexandria",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Black Veil Brides",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cunter",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "edgy"
+    },
+    {
+      "artist": "Dance Gavin Dance",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nintendo ds stage??"
+    },
+    {
+      "artist": "Destroy Rebuild Until God Shows",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Less Than Jake",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Miss May I",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Motionless in White",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Set Your Goals",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "zombie was cool"
+    },
+    {
+      "artist": "The Acacia Strain",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "zombie was cool"
+    },
+    {
+      "artist": "The Devil Wears Prada",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Winds of Plague",
+      "date": "2011-07-15T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2011",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Foo Fighters",
+      "date": "2011-08-09T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Missed Doughboys & Fucked Up"
+    },
+    {
+      "artist": "After the Burial",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Chelsea Grin",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Four Year Strong",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Memphis May Fire",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Miss May I",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mod Sun",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Of Mice & Men",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pierce the Veil",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Taking Back Sunday",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Title Fight",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Vanna",
+      "date": "2012-07-15T00:00:00Z",
+      "venueName": "Molson Canadian Amphitheatre",
+      "type": "festival",
+      "eventName": "Warped Tour 2012",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Big Chocolate",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bring Me the Horizon",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Citizen",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "Dude was wearing a kilt or something"
+    },
+    {
+      "artist": "Crizzly",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "letlive.",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "played on the way in, great set"
+    },
+    {
+      "artist": "Man Overboard",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "he drove the boat"
+    },
+    {
+      "artist": "Stick to Your Guns",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Black Dahlia Murder",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Story So Far",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Used",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "soupy de boupy"
+    },
+    {
+      "artist": "The Wonder Years",
+      "date": "2013-07-05T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2013",
+      "setlist": null,
+      "notes": "saw most of the set on the way in"
+    },
+    {
+      "artist": "Cruel Hand",
+      "date": "2013-10-08T00:00:00Z",
+      "venueName": "Mod Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Greys",
+      "date": "2013-10-08T00:00:00Z",
+      "venueName": "Mod Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "I bought their 7\" and lost it in the crowd"
+    },
+    {
+      "artist": "Slingshot Dakota",
+      "date": "2013-10-08T00:00:00Z",
+      "venueName": "Mod Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Title Fight",
+      "date": "2013-10-08T00:00:00Z",
+      "venueName": "Mod Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Ned Russin is shorter than me and I saw him in the bathroom and almost took him out when I walked around the corner and I asked how he was after and he said \"I am well\" and sounded a little scared"
+    },
+    {
+      "artist": "Beartooth",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Breathe Carolina",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Every Time I Die",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Four Year Strong",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Less Than Jake",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Parkway Drive",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Partycat",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Plague Vendor",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Stray From The Path",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Terror",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Devil Wears Prada",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Ghost Inside",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Story So Far",
+      "date": "2014-07-04T00:00:00Z",
+      "venueName": "Arrow Hall",
+      "type": "festival",
+      "eventName": "Warped Tour 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Alkaline Trio",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "Pretty sure I saw some of the set if not all"
+    },
+    {
+      "artist": "Bad Suns",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "Saw them on the way in"
+    },
+    {
+      "artist": "Brand New",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bring Me the Horizon",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Circa Survive",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "Saw a bit for sure"
+    },
+    {
+      "artist": "Citizen",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death From Above 1979",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Taking Back Sunday",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Flaming Lips",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "Saw most of the set if not all before leaving due to exhaustion"
+    },
+    {
+      "artist": "Title Fight",
+      "date": "2014-09-06T00:00:00Z",
+      "venueName": "Downsview Park",
+      "type": "festival",
+      "eventName": "Riot Fest 2014",
+      "setlist": null,
+      "notes": "We never met again after this"
+    },
+    {
+      "artist": "Dillon Francis",
+      "date": "2014-12-01T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Trippy Turtle",
+      "date": "2014-12-01T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death From Above 1979",
+      "date": "2015-01-30T00:00:00Z",
+      "venueName": "Sound Empire",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Metz",
+      "date": "2015-01-30T00:00:00Z",
+      "venueName": "Sound Empire",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Jooris Voorn",
+      "date": "2016-06-11T00:00:00Z",
+      "venueName": "Woodbine Park",
+      "type": "festival",
+      "eventName": "Bestival 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Jamie xx",
+      "date": "2016-06-11T00:00:00Z",
+      "venueName": "Woodbine Park",
+      "type": "festival",
+      "eventName": "Bestival 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Madeon",
+      "date": "2016-06-11T00:00:00Z",
+      "venueName": "Woodbine Park",
+      "type": "festival",
+      "eventName": "Bestival 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Porter Robinson",
+      "date": "2016-06-11T00:00:00Z",
+      "venueName": "Woodbine Park",
+      "type": "festival",
+      "eventName": "Bestival 2016",
+      "setlist": null,
+      "notes": "Saw a bit because it was the same time as Madeon"
+    },
+    {
+      "artist": "Tame Impala",
+      "date": "2016-06-11T00:00:00Z",
+      "venueName": "Woodbine Park",
+      "type": "festival",
+      "eventName": "Bestival 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Diplo",
+      "date": "2016-08-19T00:00:00Z",
+      "venueName": "Fort York Garrison Common",
+      "type": "festival",
+      "eventName": "Mad Decent Block Party 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Grandtheft",
+      "date": "2016-08-19T00:00:00Z",
+      "venueName": "Fort York Garrison Common",
+      "type": "festival",
+      "eventName": "Mad Decent Block Party 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Louis the Child",
+      "date": "2016-08-19T00:00:00Z",
+      "venueName": "Fort York Garrison Common",
+      "type": "festival",
+      "eventName": "Mad Decent Block Party 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Marshmello",
+      "date": "2016-08-19T00:00:00Z",
+      "venueName": "Fort York Garrison Common",
+      "type": "festival",
+      "eventName": "Mad Decent Block Party 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Slushii",
+      "date": "2016-08-19T00:00:00Z",
+      "venueName": "Fort York Garrison Common",
+      "type": "festival",
+      "eventName": "Mad Decent Block Party 2016",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Post Animal",
+      "date": "2017-05-18T00:00:00Z",
+      "venueName": "Lee's Palace",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "yeah they were alright"
+    },
+    {
+      "artist": "Wavves",
+      "date": "2017-05-18T00:00:00Z",
+      "venueName": "Lee's Palace",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Very good"
+    },
+    {
+      "artist": "Animal Collective",
+      "date": "2017-05-28T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "warbly"
+    },
+    {
+      "artist": "Circuit des Yeux",
+      "date": "2017-05-28T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "noisy psych folk"
+    },
+    {
+      "artist": "LCD Soundsystem",
+      "date": "2017-12-03T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Crack that whip, james"
+    },
+    {
+      "artist": "Foo Fighters",
+      "date": "2018-07-12T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Main act"
+    },
+    {
+      "artist": "The Struts",
+      "date": "2018-07-12T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Opening act. Missed The Beaches. Very queen-esque"
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "date": "2018-11-03T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Deerhunter",
+      "date": "2019-02-21T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Great show, Monomania was the highlight"
+    },
+    {
+      "artist": "Mary Lattimore",
+      "date": "2019-02-21T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Opened for Deerhunter"
+    },
+    {
+      "artist": "Nils Frahm",
+      "date": "2019-04-03T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "\"Ethereal\""
+    },
+    {
+      "artist": "Romes",
+      "date": "2019-05-20T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Kinda trash"
+    },
+    {
+      "artist": "The Strokes",
+      "date": "2019-05-20T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Great show, they sure do love their money"
+    },
+    {
+      "artist": "Tame Impala",
+      "date": "2019-07-26T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Much better performers than the last time I saw them"
+    },
+    {
+      "artist": "Velvet Negroni",
+      "date": "2019-07-26T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Horrible PA, couldn't hear anything. Songs seemed good though"
+    },
+    {
+      "artist": "Iron Maiden",
+      "date": "2019-08-09T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Amazing show"
+    },
+    {
+      "artist": "The Raven Age",
+      "date": "2019-08-09T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Ehh"
+    },
+    {
+      "artist": "AFI",
+      "date": "2019-08-13T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Wish they had a longer set"
+    },
+    {
+      "artist": "Noel Gallagher",
+      "date": "2019-08-13T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Not bad, funny, rich guy"
+    },
+    {
+      "artist": "Smashing Pumpkins",
+      "date": "2019-08-13T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Behemoth",
+      "date": "2019-08-20T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Fuck yeah"
+    },
+    {
+      "artist": "Gojira",
+      "date": "2019-08-20T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Also fuck yeah"
+    },
+    {
+      "artist": "Slipknot",
+      "date": "2019-08-20T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Volbeat",
+      "date": "2019-08-20T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Not my thing but still cool. Danko Jones came out"
+    },
+    {
+      "artist": "Thom Yorke",
+      "date": "2019-09-27T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "He dance"
+    },
+    {
+      "artist": "Amon Amarth",
+      "date": "2019-10-09T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Actually really liked them"
+    },
+    {
+      "artist": "Arch Enemy",
+      "date": "2019-10-09T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Was cool. Saw Sam Dunn during their set"
+    },
+    {
+      "artist": "At the Gates",
+      "date": "2019-10-09T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "So happy I got to see At the Gates, finally. Quick set but it was amazing"
+    },
+    {
+      "artist": "Grand Magus",
+      "date": "2019-10-09T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Pretty cool"
+    },
+    {
+      "artist": "Race Traitor",
+      "date": "2020-02-25T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Short but good set"
+    },
+    {
+      "artist": "Refused",
+      "date": "2020-02-25T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Incredible show, so much energy"
+    },
+    {
+      "artist": "Youth Code",
+      "date": "2020-02-25T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Synth guys dance moves were funny"
+    },
+    {
+      "artist": "Interloper",
+      "date": "2022-03-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "ehh"
+    },
+    {
+      "artist": "Maou Mindu",
+      "date": "2022-03-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "great"
+    },
+    {
+      "artist": "Obscura",
+      "date": "2022-03-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "great"
+    },
+    {
+      "artist": "By Divine Right",
+      "date": "2022-03-11T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "HotKid",
+      "date": "2022-03-11T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Teenage Fiction",
+      "date": "2022-03-11T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mayhem",
+      "date": "2022-03-23T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "pure fucking armageddon baby"
+    },
+    {
+      "artist": "Midnight",
+      "date": "2022-03-23T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Great"
+    },
+    {
+      "artist": "Billy Talent",
+      "date": "2022-04-04T00:00:00Z",
+      "venueName": "TD Place",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Finally saw them after 18 or so years"
+    },
+    {
+      "artist": "NOBRO",
+      "date": "2022-04-04T00:00:00Z",
+      "venueName": "TD Place",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "great band, second half of the set was better"
+    },
+    {
+      "artist": "Rise Against",
+      "date": "2022-04-04T00:00:00Z",
+      "venueName": "TD Place",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Great set, was expecting to feel indifferent but it was a great show"
+    },
+    {
+      "artist": "Baroness",
+      "date": "2022-04-13T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "incredible 2 1/2 hour set"
+    },
+    {
+      "artist": "Godspeed You! Black Emperror",
+      "date": "2022-05-07T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Jennifer Castle",
+      "date": "2022-05-07T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Iceage",
+      "date": "2022-05-21T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Slow Crush",
+      "date": "2022-05-21T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "SOM",
+      "date": "2022-05-21T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Wiki",
+      "date": "2022-05-21T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cypress Hill",
+      "date": "2022-05-29T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Slipknot",
+      "date": "2022-05-29T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "JPEGMAFIA",
+      "date": "2022-06-06T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "It was good but not great. I felt old too"
+    },
+    {
+      "artist": "The Last Podcast on the Left",
+      "date": "2022-06-25T00:00:00Z",
+      "venueName": "Massey Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Foreign Hands",
+      "date": "2022-07-07T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "just ok, record sounds better"
+    },
+    {
+      "artist": "Omerta",
+      "date": "2022-07-07T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "great edgy band"
+    },
+    {
+      "artist": "SeeYouSpaceCowboy",
+      "date": "2022-07-07T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "great set"
+    },
+    {
+      "artist": "Alexisonfire",
+      "date": "2022-07-13T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2022",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Millencolin",
+      "date": "2022-07-13T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2022",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Sum 41",
+      "date": "2022-07-13T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2022",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "date": "2022-07-15T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2022",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Run the Jewels",
+      "date": "2022-07-15T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2022",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The National",
+      "date": "2022-07-17T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2022",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Black Galaxy",
+      "date": "2022-08-09T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hard Labour",
+      "date": "2022-08-09T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hempress",
+      "date": "2022-08-09T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hippie Death Cult",
+      "date": "2022-08-09T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Sasquatch",
+      "date": "2022-08-09T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Meg Myers",
+      "date": "2022-09-05T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "everybody knows shits fucked dance vibes"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "date": "2022-09-05T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "excellent, ive waited like 18 years to see them lol"
+    },
+    {
+      "artist": "Waterparks",
+      "date": "2022-09-05T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "they were ok"
+    },
+    {
+      "artist": "Bonobo",
+      "date": "2022-09-20T00:00:00Z",
+      "venueName": "Algonquin Commons Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Constellation 425",
+      "date": "2022-09-20T00:00:00Z",
+      "venueName": "Algonquin Commons Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Steve O",
+      "date": "2022-09-20T00:00:00Z",
+      "venueName": "Algonquin Commons Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Teri Gender Bender",
+      "date": "2022-10-05T00:00:00Z",
+      "venueName": "Massey Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Mars Volta",
+      "date": "2022-10-05T00:00:00Z",
+      "venueName": "Massey Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "excellent show"
+    },
+    {
+      "artist": "Iron Maiden",
+      "date": "2022-10-11T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Within Temptation",
+      "date": "2022-10-11T00:00:00Z",
+      "venueName": "Air Canada Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "CHAI",
+      "date": "2022-10-14T00:00:00Z",
+      "venueName": "Queen Elizabeth Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hippo Campus",
+      "date": "2022-10-14T00:00:00Z",
+      "venueName": "Queen Elizabeth Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Congregation of Savagery",
+      "date": "2022-11-30T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cosmic Crypt",
+      "date": "2022-11-30T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Ecstatic Vision",
+      "date": "2022-11-30T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Height's Peak",
+      "date": "2022-11-30T00:00:00Z",
+      "venueName": "Dominion Tavern",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "GZA",
+      "date": "2023-03-18T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "Liquid Swords w a band"
+    },
+    {
+      "artist": "Raz Fresco",
+      "date": "2023-03-18T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Life of Agony",
+      "date": "2023-03-28T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Sick of It All",
+      "date": "2023-03-28T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Decrepit Birth",
+      "date": "2023-04-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Echoes from Beyond",
+      "date": "2023-04-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Krisiun",
+      "date": "2023-04-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Vader",
+      "date": "2023-04-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Ax Minister",
+      "date": "2023-04-05T00:00:00Z",
+      "venueName": "The Garrison",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mendacity",
+      "date": "2023-04-05T00:00:00Z",
+      "venueName": "The Garrison",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Wormwitch",
+      "date": "2023-04-05T00:00:00Z",
+      "venueName": "The Garrison",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Black Anvil",
+      "date": "2023-04-08T00:00:00Z",
+      "venueName": "The Opera House",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Enslaved",
+      "date": "2023-04-08T00:00:00Z",
+      "venueName": "The Opera House",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Insomnium",
+      "date": "2023-04-08T00:00:00Z",
+      "venueName": "The Opera House",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Black Flag",
+      "date": "2023-04-18T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "slow flag but good. met mike v"
+    },
+    {
+      "artist": "For Your Health",
+      "date": "2023-05-10T00:00:00Z",
+      "venueName": "Velvet Underground",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The World Is a Beautiful Place and I Am No Longer Afraid to Die",
+      "date": "2023-05-10T00:00:00Z",
+      "venueName": "Velvet Underground",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "World's Greatest Dad",
+      "date": "2023-05-10T00:00:00Z",
+      "venueName": "Velvet Underground",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "guitar problems"
+    },
+    {
+      "artist": "The Cure",
+      "date": "2023-06-16T00:00:00Z",
+      "venueName": "Bell Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "fucking finally man"
+    },
+    {
+      "artist": "The Twilight Sad",
+      "date": "2023-06-16T00:00:00Z",
+      "venueName": "Bell Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Cure",
+      "date": "2023-06-17T00:00:00Z",
+      "venueName": "Bell Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Twilight Sad",
+      "date": "2023-06-17T00:00:00Z",
+      "venueName": "Bell Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Adolescents",
+      "date": "2023-06-22T00:00:00Z",
+      "venueName": "History",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Circle Jerks",
+      "date": "2023-06-22T00:00:00Z",
+      "venueName": "History",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Descendents",
+      "date": "2023-06-22T00:00:00Z",
+      "venueName": "History",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Lord Huron",
+      "date": "2023-06-24T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Little Animal!",
+      "date": "2023-06-26T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Melody Gardot",
+      "date": "2023-06-26T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Sun Ra Arkestra",
+      "date": "2023-06-26T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Buddy Guy",
+      "date": "2023-06-28T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Brekky Boy",
+      "date": "2023-06-29T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Snarky Puppy",
+      "date": "2023-06-29T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Herbie Hancock",
+      "date": "2023-06-30T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Shania Twain",
+      "date": "2023-07-06T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Billy Talent",
+      "date": "2023-07-07T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "PUP",
+      "date": "2023-07-07T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Weezer",
+      "date": "2023-07-07T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "BADBADNOTGOOD",
+      "date": "2023-07-08T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death Cab for Cutie",
+      "date": "2023-07-09T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Tegan and Sara",
+      "date": "2023-07-09T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Foo Fighters",
+      "date": "2023-07-12T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Alison Russell",
+      "date": "2023-07-14T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Fleet Foxes",
+      "date": "2023-07-14T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Sauce Boss",
+      "date": "2023-07-14T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Alvvays",
+      "date": "2023-07-16T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Smile",
+      "date": "2023-07-16T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Ottawa Bluesfest 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Better Lovers",
+      "date": "2023-07-25T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Sink",
+      "date": "2023-07-25T00:00:00Z",
+      "venueName": "Galerie SAW",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Phantogram",
+      "date": "2023-08-04T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Queens of the Stone Age",
+      "date": "2023-08-04T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Armed",
+      "date": "2023-08-04T00:00:00Z",
+      "venueName": "Budweiser Stage",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "96 Bitter Beings",
+      "date": "2023-08-16T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Anndy Negative",
+      "date": "2023-08-16T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Turning Lights",
+      "date": "2023-08-16T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Trenchfoot",
+      "date": "2023-08-16T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Decrepit Birth",
+      "date": "2023-08-17T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Insurrection",
+      "date": "2023-08-17T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Psycroptic",
+      "date": "2023-08-17T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Interpol",
+      "date": "2023-09-03T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Rival Sons",
+      "date": "2023-09-03T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Smashing Pumpkins",
+      "date": "2023-09-03T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Burn the Evidence",
+      "date": "2023-09-07T00:00:00Z",
+      "venueName": "Rainbow Bistro",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death Before Dishonor",
+      "date": "2023-09-07T00:00:00Z",
+      "venueName": "Rainbow Bistro",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Madball",
+      "date": "2023-09-07T00:00:00Z",
+      "venueName": "Rainbow Bistro",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Soulthief",
+      "date": "2023-09-07T00:00:00Z",
+      "venueName": "Rainbow Bistro",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Busty and the Bass",
+      "date": "2023-09-13T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Iggy Pop",
+      "date": "2023-09-13T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Arkells",
+      "date": "2023-09-14T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Gov't Mule",
+      "date": "2023-09-14T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bush",
+      "date": "2023-09-15T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Headstones",
+      "date": "2023-09-15T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hozier",
+      "date": "2023-09-17T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "X Ambassadors",
+      "date": "2023-09-17T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2023",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Drab Majesty",
+      "date": "2023-09-23T00:00:00Z",
+      "venueName": "Queen Elizabeth Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Slowdive",
+      "date": "2023-09-23T00:00:00Z",
+      "venueName": "Queen Elizabeth Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pretty",
+      "date": "2023-09-24T00:00:00Z",
+      "venueName": "The Concert Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Brian Jonestown Massacre",
+      "date": "2023-09-24T00:00:00Z",
+      "venueName": "The Concert Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Norman Westberg",
+      "date": "2023-09-26T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Swans",
+      "date": "2023-09-26T00:00:00Z",
+      "venueName": "Phoenix Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Blood Incantation",
+      "date": "2023-09-27T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cannibal Corpse",
+      "date": "2023-09-27T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Gorguts",
+      "date": "2023-09-27T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mayhem",
+      "date": "2023-09-27T00:00:00Z",
+      "venueName": "Rebel",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bad Suns",
+      "date": "2023-10-12T00:00:00Z",
+      "venueName": "History",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Band Camino",
+      "date": "2023-10-12T00:00:00Z",
+      "venueName": "History",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Nick Cave",
+      "date": "2023-10-14T00:00:00Z",
+      "venueName": "Massey Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death Ships",
+      "date": "2023-10-20T00:00:00Z",
+      "venueName": "Mayfair Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Crisis Party",
+      "date": "2023-10-22T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "GBH",
+      "date": "2023-10-22T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Niis",
+      "date": "2023-10-22T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Baby Shakes",
+      "date": "2023-10-31T00:00:00Z",
+      "venueName": "Irving Plaza",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Fucked Up",
+      "date": "2023-10-31T00:00:00Z",
+      "venueName": "Irving Plaza",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Damned",
+      "date": "2023-10-31T00:00:00Z",
+      "venueName": "Irving Plaza",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The 1975",
+      "date": "2023-11-17T00:00:00Z",
+      "venueName": "Bell Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "just fine",
+      "date": "2023-12-04T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Tiny Moving Parts",
+      "date": "2023-12-04T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "World's Greatest Dad",
+      "date": "2023-12-04T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Militarie Gun",
+      "date": "2024-02-18T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pool Kids",
+      "date": "2024-02-18T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Spaced",
+      "date": "2024-02-18T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Spiritual Cramp",
+      "date": "2024-02-18T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Dead Heat",
+      "date": "2024-02-20T00:00:00Z",
+      "venueName": "Les Foufounes \u00c9lectriques",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Ghoul",
+      "date": "2024-02-20T00:00:00Z",
+      "venueName": "Les Foufounes \u00c9lectriques",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Municipal Waste",
+      "date": "2024-02-20T00:00:00Z",
+      "venueName": "Les Foufounes \u00c9lectriques",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Necrot",
+      "date": "2024-02-20T00:00:00Z",
+      "venueName": "Les Foufounes \u00c9lectriques",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cancer Bats",
+      "date": "2024-03-09T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "GWAR",
+      "date": "2024-03-09T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "X-Cops",
+      "date": "2024-03-09T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Alkaline Trio",
+      "date": "2024-03-13T00:00:00Z",
+      "venueName": "Th\u00e9\u00e2tre Beanfield",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Drug Church",
+      "date": "2024-03-13T00:00:00Z",
+      "venueName": "Th\u00e9\u00e2tre Beanfield",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Worriers",
+      "date": "2024-03-13T00:00:00Z",
+      "venueName": "Th\u00e9\u00e2tre Beanfield",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Less Than Jake",
+      "date": "2024-03-23T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Strung Out",
+      "date": "2024-03-23T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Raging Nathans",
+      "date": "2024-03-23T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Black Budget",
+      "date": "2024-03-27T00:00:00Z",
+      "venueName": "The Garrison",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death Lens",
+      "date": "2024-03-27T00:00:00Z",
+      "venueName": "The Garrison",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Teen Mortgage",
+      "date": "2024-03-27T00:00:00Z",
+      "venueName": "The Garrison",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Darkest Hour",
+      "date": "2024-04-01T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Filth Is Eternal",
+      "date": "2024-04-01T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "I AM",
+      "date": "2024-04-01T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Somnuri",
+      "date": "2024-04-01T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Queens of the Stone Age",
+      "date": "2024-04-12T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Struts",
+      "date": "2024-04-12T00:00:00Z",
+      "venueName": "Canadian Tire Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Insomnium",
+      "date": "2024-04-13T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Omnium Gatherum",
+      "date": "2024-04-13T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Wilderun",
+      "date": "2024-04-13T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "200 Stab Wounds",
+      "date": "2024-05-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Dying Fetus",
+      "date": "2024-05-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Full of Hell",
+      "date": "2024-05-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Kruelty",
+      "date": "2024-05-02T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "LSD Trio",
+      "date": "2024-05-15T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Messthetics and James Brandon Lewis",
+      "date": "2024-05-15T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Ichi Bons",
+      "date": "2024-05-27T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Damned",
+      "date": "2024-05-27T00:00:00Z",
+      "venueName": "Danforth Music Hall",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Lagwagon",
+      "date": "2024-06-04T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mustard Plug",
+      "date": "2024-06-04T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Passenger Princess",
+      "date": "2024-06-04T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Orville Peck",
+      "date": "2024-07-04T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Tokyo Police Club",
+      "date": "2024-07-04T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Nickelback",
+      "date": "2024-07-05T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hopper",
+      "date": "2024-07-06T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Killer Mike",
+      "date": "2024-07-06T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mt. Joy",
+      "date": "2024-07-06T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Shred Kelly",
+      "date": "2024-07-06T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Carly Rae Jepsen",
+      "date": "2024-07-07T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Chelsea Cutler",
+      "date": "2024-07-07T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Maroon 5",
+      "date": "2024-07-07T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Medicine Singers ft. Lee Ranaldo, Yonatan Gat & Zoon",
+      "date": "2024-07-10T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Zac Brown Band",
+      "date": "2024-07-10T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cancer Bats",
+      "date": "2024-07-11T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Silverstein",
+      "date": "2024-07-11T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Offspring",
+      "date": "2024-07-11T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "M\u00f6tley Cr\u00fce",
+      "date": "2024-07-13T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Nas",
+      "date": "2024-07-14T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Critical Witness",
+      "date": "2024-07-21T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Soul Glo",
+      "date": "2024-07-21T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Upchuck",
+      "date": "2024-07-21T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Arlo Parks",
+      "date": "2024-08-02T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bladee",
+      "date": "2024-08-02T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Green Day",
+      "date": "2024-08-02T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Noah Kahan",
+      "date": "2024-08-02T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Teddy Swims",
+      "date": "2024-08-02T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Two Door Cinema Club",
+      "date": "2024-08-02T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Chappell Roan",
+      "date": "2024-08-03T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Denzel Curry",
+      "date": "2024-08-03T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Lola Young",
+      "date": "2024-08-03T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Rancid",
+      "date": "2024-08-03T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Smashing Pumpkins",
+      "date": "2024-08-03T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Talk",
+      "date": "2024-08-03T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Alvvays",
+      "date": "2024-08-04T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Amyl and the Sniffers",
+      "date": "2024-08-04T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "DIIV",
+      "date": "2024-08-04T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hozier",
+      "date": "2024-08-04T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Justice",
+      "date": "2024-08-04T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Still Woozy",
+      "date": "2024-08-04T00:00:00Z",
+      "venueName": "Parc Jean-Drapeau",
+      "type": "festival",
+      "eventName": "Osheaga 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "B\u00e9ton Arm\u00e9",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Circle Jerks",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Codefendants",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "NOFX",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Real McKenzies",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Scream",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Speed Massacre",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Interrupters",
+      "date": "2024-08-24T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Descendents",
+      "date": "2024-08-25T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Flatliners",
+      "date": "2024-08-25T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Good Riddance",
+      "date": "2024-08-25T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "NOFX",
+      "date": "2024-08-25T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Saint Catherines",
+      "date": "2024-08-25T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Vulgaires Machins",
+      "date": "2024-08-25T00:00:00Z",
+      "venueName": "Stade Olympique",
+      "type": "festival",
+      "eventName": "Punk in Drublic",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Spoon",
+      "date": "2024-09-11T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "A Giant Dog",
+      "date": "2024-09-11T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Greta Van Fleet",
+      "date": "2024-09-12T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Explosions in the Sky",
+      "date": "2024-09-13T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Rise Against",
+      "date": "2024-09-13T00:00:00Z",
+      "venueName": "Landsdowne Park",
+      "type": "festival",
+      "eventName": "CityFolk Festival 2024",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Movements",
+      "date": "2024-09-14T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Turnover",
+      "date": "2024-09-14T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Queen of Jeans",
+      "date": "2024-09-14T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Death from Above 1979",
+      "date": "2024-10-01T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Teen Mortgage",
+      "date": "2024-10-01T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Fontaines D.C.",
+      "date": "2024-10-11T00:00:00Z",
+      "venueName": "Queen Elizabeth Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Been Stellar",
+      "date": "2024-10-11T00:00:00Z",
+      "venueName": "Queen Elizabeth Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Danny Dukess",
+      "date": "2024-10-20T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Danny Brown",
+      "date": "2024-10-20T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Carnifex",
+      "date": "2024-10-23T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Cryptopsy",
+      "date": "2024-10-23T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Mental Cruelty",
+      "date": "2024-10-23T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Organectomy",
+      "date": "2024-10-23T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Heavy//Hitter",
+      "date": "2024-10-23T00:00:00Z",
+      "venueName": "The Brass Monkey",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Slowdive",
+      "date": "2025-01-26T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Quannnic",
+      "date": "2025-01-26T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Phil Hartnoll",
+      "date": "2025-02-07T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "DJ Balu",
+      "date": "2025-02-07T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Crystal Method",
+      "date": "2025-02-07T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Decapitated",
+      "date": "2025-02-12T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Exmortus",
+      "date": "2025-02-12T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Darkest Hour",
+      "date": "2025-02-12T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Incantation",
+      "date": "2025-02-12T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Destroyer",
+      "date": "2025-03-01T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Vltimas",
+      "date": "2025-02-26T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Stormruler",
+      "date": "2025-02-26T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Septicflesh",
+      "date": "2025-02-26T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Coroner",
+      "date": "2025-03-11T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Scepter",
+      "date": "2025-03-11T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Deceased",
+      "date": "2025-03-11T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Nick Cave and the Bad Seeds",
+      "date": "2025-04-24T00:00:00Z",
+      "venueName": "Place Bell",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Metallica",
+      "date": "2025-04-26T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Limp Bizkit",
+      "date": "2025-04-26T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Ice Nine Kills",
+      "date": "2025-04-26T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Fractal Universe",
+      "date": "2025-05-04T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Decrepit Birth",
+      "date": "2025-05-04T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Obscura",
+      "date": "2025-05-04T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Atheist",
+      "date": "2025-05-04T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Origin",
+      "date": "2025-05-04T00:00:00Z",
+      "venueName": "Overflow Brewery",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Roots",
+      "date": "2025-06-22T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Shuffle Demons",
+      "date": "2025-06-22T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pony Girl",
+      "date": "2025-06-22T00:00:00Z",
+      "venueName": "Confederation Park",
+      "type": "festival",
+      "eventName": "Ottawa Jazz Festival 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bigwig",
+      "date": "2025-06-28T00:00:00Z",
+      "venueName": "Rue des Forges",
+      "type": "festival",
+      "eventName": "FestiVoix de Trois-Rivi\u00e8res 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pulley",
+      "date": "2025-06-28T00:00:00Z",
+      "venueName": "Rue des Forges",
+      "type": "festival",
+      "eventName": "FestiVoix de Trois-Rivi\u00e8res 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bad Religion",
+      "date": "2025-06-28T00:00:00Z",
+      "venueName": "Rue des Forges",
+      "type": "festival",
+      "eventName": "FestiVoix de Trois-Rivi\u00e8res 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Bad Religion",
+      "date": "2025-07-04T00:00:00Z",
+      "venueName": "Pavillon des sports Roland-D\u00e9sourdy",
+      "type": "festival",
+      "eventName": "Soif de musique 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Father John Misty",
+      "date": "2025-07-10T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hozier",
+      "date": "2025-07-11T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Kurt Vile & The Violators",
+      "date": "2025-07-12T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pixies",
+      "date": "2025-07-12T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Turnstile",
+      "date": "2025-07-12T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Shania Twain",
+      "date": "2025-07-13T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Tom Morello",
+      "date": "2025-07-16T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Def Leppard",
+      "date": "2025-07-16T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Green Day",
+      "date": "2025-07-18T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Linda Lindas",
+      "date": "2025-07-18T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "BADBADNOTGOOD",
+      "date": "2025-07-20T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Kaytranada",
+      "date": "2025-07-20T00:00:00Z",
+      "venueName": "LeBreton Flats",
+      "type": "festival",
+      "eventName": "Bluesfest 2025",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "date": "2025-08-22T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Pixies",
+      "date": "2025-08-22T00:00:00Z",
+      "venueName": "Rogers Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Boys Noize",
+      "date": "2025-08-23T00:00:00Z",
+      "venueName": "Scotiabank Arena",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Nine Inch Nails",
+      "date": "2025-08-23T00:00:00Z",
+      "venueName": "Scotiabank Arena",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "System of a Down",
+      "date": "2025-09-03T00:00:00Z",
+      "venueName": "Rogers Stadium",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Deftones",
+      "date": "2025-09-03T00:00:00Z",
+      "venueName": "Rogers Stadium",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Wisp",
+      "date": "2025-09-03T00:00:00Z",
+      "venueName": "Rogers Stadium",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Polyphia",
+      "date": "2025-09-03T00:00:00Z",
+      "venueName": "Rogers Stadium",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "BFG",
+      "date": "2025-09-06T00:00:00Z",
+      "venueName": "Kensington Market",
+      "type": "festival",
+      "eventName": "Darbyfest III",
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Haim",
+      "date": "2025-09-06T00:00:00Z",
+      "venueName": "Scotiabank Arena",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Between the Buried and Me",
+      "date": "2025-09-16T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Hail the Sun",
+      "date": "2025-09-16T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The World Is A Beautiful Place and I Am No Longer Afraid to Die",
+      "date": "2025-09-16T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Propagandhi",
+      "date": "2025-09-19T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Crisis Party",
+      "date": "2025-09-19T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Skrout",
+      "date": "2025-09-19T00:00:00Z",
+      "venueName": "Bronson Theatre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "The Damned",
+      "date": "2025-09-24T00:00:00Z",
+      "venueName": "Th\u00e9\u00e2tre Beanfield",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Teenage Bottlerocket",
+      "date": "2025-09-28T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "We Were Sharks",
+      "date": "2025-09-28T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "Full Throttle",
+      "date": "2025-09-28T00:00:00Z",
+      "venueName": "The 27 Club",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
+    },
+    {
+      "artist": "GoGo Penguin",
+      "date": "2025-10-17T00:00:00Z",
+      "venueName": "National Arts Centre",
+      "type": "concert",
+      "eventName": null,
+      "setlist": null,
+      "notes": "nan"
     }
   ]
 }

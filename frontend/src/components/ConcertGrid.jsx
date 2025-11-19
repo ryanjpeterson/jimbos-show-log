@@ -12,13 +12,13 @@ function ConcertCard({ concert, onConcertDeleted }) {
     : 'Invalid Date';
 
   const handleDelete = async () => {
-    // No need for e.preventDefault() here if the button is not inside a Link
+    // No need for e.preventDefault() here since the button is no longer inside a Link
     if (window.confirm(`Delete show for ${concert.artist}?`)) {
       try {
         await axios.delete(`/api/delete/concert/${concert.id}`);
         onConcertDeleted(concert.id);
       } catch (err) {
-        console.log(err);
+        console.log(err)
         alert('Failed to delete concert.');
       }
     }
@@ -27,7 +27,7 @@ function ConcertCard({ concert, onConcertDeleted }) {
   return (
     <div className="border rounded-lg shadow-md bg-white flex flex-col justify-between h-full overflow-hidden hover:shadow-xl transition duration-300 group">
       
-      {/* IMAGE HERO - Make this clickable */}
+      {/* IMAGE HERO - Make this clickable independently */}
       <Link to={`/concerts/${concert.id}`} className="block h-48 bg-gray-200 relative overflow-hidden">
         {concert.imageUrl ? (
           <img 
@@ -47,27 +47,34 @@ function ConcertCard({ concert, onConcertDeleted }) {
 
       <div className="p-4 flex flex-col flex-grow">
         <div>
-          {/* TITLE - Make this clickable */}
+          {/* TITLE - Make this clickable independently */}
           <h3 className="text-xl font-bold text-gray-900 truncate">
             <Link to={`/concerts/${concert.id}`} className="group-hover:text-blue-600">
               {concert.artist}
             </Link>
           </h3>
-          {concert.eventName && <p className="text-sm font-semibold text-blue-500">{concert.eventName}</p>}
           
-          <p className="text-gray-600 text-sm mt-1">
+          {/* EVENT NAME - Conditionally render or show blank space for alignment */}
+          {concert.eventName ? (
+            <p className="text-sm font-semibold text-blue-500 truncate">{concert.eventName}</p>
+          ) : (
+            // Render a non-breaking space to keep the height consistent
+            <p className="text-sm font-semibold text-transparent select-none">&nbsp;</p>
+          )}
+          
+          <p className="text-gray-600 text-sm mt-1 truncate">
             {concert.venue.name}
           </p>
         </div>
 
         <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
-           <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">
+           <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold truncate max-w-[60%]">
              {concert.venue.city}
            </span>
            
-           {/* Admin Actions - Now safe because they are not inside the main Link */}
+           {/* Admin Actions - Now perfectly valid HTML because they sit alongside, not inside, the other links */}
            {isAuthenticated && (
-             <div className="flex space-x-2">
+             <div className="flex space-x-2 shrink-0">
                 <Link to={`/edit/concert/${concert.id}`} className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded hover:bg-yellow-200">Edit</Link>
                 <button onClick={handleDelete} className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200">Delete</button>
              </div>
