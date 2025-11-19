@@ -26,14 +26,55 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET /concerts/:id - Single concert by ID + Related Shows
 router.get('/concerts/:id', async (req, res) => {
   try {
+    const concertId = parseInt(req.params.id);
+    
+    // 1. Fetch the main concert
     const concert = await prisma.concert.findUnique({
-      where: { id: parseInt(req.params.id) },
+      where: { id: concertId },
       include: { venue: true },
     });
+
     if (!concert) return res.status(404).json({ message: "Concert not found" });
-    res.json(concert);
+
+    // 2. Fetch related concerts (Same Date AND Same Venue, excluding self)
+    // We assume "Same Date" means the same day, ignoring time if possible, 
+    // but since we store full ISO strings, exact match might be strict.
+    // However, usually festival sets are entered with the same base date.
+    // If your dates have different times (e.g. 2pm vs 5pm), we might need a range query.
+    // For now, let's try exact match on the stored date timestamp, assuming imported/created data aligns.
+    
+    // NOTE: If date includes time, strict equality might miss same-day shows with different set times.
+    // Let's do a range query for the whole day to be safe.
+    const startOfDay = new Date(concert.date);
+    startOfDay.setUTCHours(0,0,0,0);
+    
+    const endOfDay = new Date(concert.date);
+    endOfDay.setUTCHours(23,59,59,999);
+
+    const relatedConcerts = await prisma.concert.findMany({
+      where: {
+        venueId: concert.venueId,
+        date: {
+          gte: startOfDay,
+          lte: endOfDay
+        },
+        id: { not: concertId } // Exclude the current concert
+      },
+      orderBy: { artist: 'asc' }, // Alphabetical order for line-ups
+      select: {
+        id: true,
+        artist: true,
+        artistSlug: true,
+        type: true
+      }
+    });
+
+    // 3. Attach related concerts to response
+    res.json({ ...concert, relatedConcerts });
+    
   } catch (error) {
     res.status(500).json({ message: "Server Error", error: error.message });
   }

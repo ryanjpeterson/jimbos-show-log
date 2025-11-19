@@ -106,6 +106,28 @@ function ConcertDetailPage() {
         </div>
       )}
 
+      {/* NEW: Related Concerts Section */}
+      {concert.relatedConcerts && concert.relatedConcerts.length > 0 && (
+        <div className="mt-16 pt-8 border-t border-gray-200">
+          <h3 className="text-2xl font-bold mb-6 text-gray-800">Also played at {concert.venue.name} on this day</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {concert.relatedConcerts.map(related => (
+              <Link 
+                key={related.id} 
+                to={`/concerts/${related.id}`}
+                className="block p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-300 transition"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-lg text-gray-900 truncate">{related.artist}</span>
+                  <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded uppercase">{related.type}</span>
+                </div>
+                <div className="text-sm text-blue-500 mt-2 font-medium">View Details &rarr;</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Lightbox Modal */}
       {selectedImage && (
         <div 
