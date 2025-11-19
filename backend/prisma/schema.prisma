@@ -22,6 +22,7 @@ model Venue {
   name      String
   slug      String    @unique
   city      String
+  address   String?
   latitude  Decimal   @db.Decimal(9, 6)
   longitude Decimal   @db.Decimal(10, 6)
   concerts  Concert[]
