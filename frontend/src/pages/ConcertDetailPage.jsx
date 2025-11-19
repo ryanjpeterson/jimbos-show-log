@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext'; // Added useAuth
 
 function ConcertDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate(); // For redirect after delete
+  const { isAuthenticated } = useAuth(); // Check auth status
+
   const [concert, setConcert] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -19,6 +23,18 @@ function ConcertDetailPage() {
         setLoading(false);
       });
   }, [id]);
+
+  const handleDelete = async () => {
+    if (window.confirm(`Delete show for ${concert.artist}?`)) {
+      try {
+        await axios.delete(`/api/delete/concert/${concert.id}`);
+        navigate('/'); // Redirect to home after delete
+      } catch (err) {
+        console.log(err)
+        alert('Failed to delete concert.');
+      }
+    }
+  };
 
   if (loading) return <div className="p-8 text-center">Loading concert details...</div>;
   if (!concert) return <div className="p-8 text-center text-red-500">Concert not found.</div>;
@@ -47,9 +63,30 @@ function ConcertDetailPage() {
         </div>
 
         <div className="flex flex-col justify-center space-y-4">
-          <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full w-fit uppercase tracking-wide">
-            {concert.type}
-          </span>
+          <div className="flex justify-between items-start">
+            <span className="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full w-fit uppercase tracking-wide">
+                {concert.type}
+            </span>
+            
+            {/* Admin Actions - Now placed here */}
+            {isAuthenticated && (
+                <div className="flex space-x-3">
+                    <Link 
+                        to={`/edit/concert/${concert.id}`} 
+                        className="text-sm font-bold text-yellow-600 hover:text-yellow-800 bg-yellow-50 px-3 py-1 rounded border border-yellow-200 transition"
+                    >
+                        Edit
+                    </Link>
+                    <button 
+                        onClick={handleDelete} 
+                        className="text-sm font-bold text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded border border-red-200 transition"
+                    >
+                        Delete
+                    </button>
+                </div>
+            )}
+          </div>
+
           <h1 className="text-5xl font-black text-gray-900 leading-tight">
             <Link to={`/artists/${concert.artistSlug}`} className="hover:text-blue-600">
               {concert.artist}
@@ -106,7 +143,7 @@ function ConcertDetailPage() {
         </div>
       )}
 
-      {/* NEW: Related Concerts Section */}
+      {/* Related Concerts Section */}
       {concert.relatedConcerts && concert.relatedConcerts.length > 0 && (
         <div className="mt-16 pt-8 border-t border-gray-200">
           <h3 className="text-2xl font-bold mb-6 text-gray-800">Also played at {concert.venue.name} on this day</h3>
