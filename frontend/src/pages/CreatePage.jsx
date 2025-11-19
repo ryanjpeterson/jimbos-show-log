@@ -5,125 +5,143 @@ import { useNavigate } from 'react-router-dom';
 function CreatePage() {
   const [type, setType] = useState('concert');
   const [venues, setVenues] = useState([]);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    gallery: [] // Initialize gallery as empty array
+  });
+  // Helper for the gallery text input
+  const [galleryInput, setGalleryInput] = useState(''); 
+  
   const navigate = useNavigate();
 
-  // Fetch all venues for the dropdown
   useEffect(() => {
-    axios.get('/api/venues')
-      .then(res => setVenues(res.data))
-      .catch(err => console.error(err));
+    axios.get('/api/venues').then(res => setVenues(res.data));
   }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
+  // Handle adding a URL to the gallery array
+  const addGalleryImage = () => {
+    if (galleryInput) {
+      setFormData({
+        ...formData,
+        gallery: [...(formData.gallery || []), galleryInput]
+      });
+      setGalleryInput('');
+    }
+  };
+
+  const removeGalleryImage = (index) => {
+    const newGallery = [...formData.gallery];
+    newGallery.splice(index, 1);
+    setFormData({ ...formData, gallery: newGallery });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
     try {
-      // 1. Clone the form data so we don't mess up the state
       const payload = { ...formData };
-
-      // 2. CONCERT SPECIFIC CLEANUP
       if (type === 'concert') {
-        payload.type = payload.type || 'concert'; // Default to concert
-        // Ensure we aren't sending a nested venue object if it exists
-        if (payload.venue) delete payload.venue;
-        // Ensure venueId is a number
+        payload.type = payload.type || 'concert';
         if (payload.venueId) payload.venueId = parseInt(payload.venueId);
+        // Ensure gallery is array
+        if (!payload.gallery) payload.gallery = [];
       }
-
-      // 3. VENUE SPECIFIC CLEANUP (Fixes your 500 Error)
       if (type === 'venue') {
-        // Convert text inputs to actual numbers
-        // If the user left them blank, default to 0 to prevent crashes
-        payload.latitude = payload.latitude ? parseFloat(payload.latitude) : 0;
-        payload.longitude = payload.longitude ? parseFloat(payload.longitude) : 0;
-
-        // Ensure name exists for the slug generator
-        if (!payload.name) {
-          alert("Venue name is required");
-          return;
-        }
+        payload.latitude = parseFloat(payload.latitude) || 0;
+        payload.longitude = parseFloat(payload.longitude) || 0;
       }
-
-      // 4. Send the request
       await axios.post(`/api/create/${type}`, payload);
-      
-      // 5. Redirect on success
       navigate('/');
-
     } catch (err) {
-      console.error('Failed to create entry', err);
-      // Display the error message from the backend if available
-      const message = err.response?.data?.message || err.message;
-      alert(`Error: ${message}`);
+      alert(`Error: ${err.response?.data?.message || err.message}`);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-4 space-y-4">
-      <h2 className="text-2xl font-bold">Create New Entry</h2>
-      <div>
-        <label>
-          <input
-            type="radio"
-            name="type"
-            value="concert"
-            checked={type === 'concert'}
-            onChange={() => setType('concert')}
-          /> Concert
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-4 space-y-6">
+      <h2 className="text-3xl font-bold text-gray-800">Log New Entry</h2>
+      
+      <div className="flex space-x-6 border-b pb-4">
+        <label className="flex items-center cursor-pointer">
+          <input type="radio" name="type" value="concert" checked={type === 'concert'} onChange={() => setType('concert')} className="mr-2 h-5 w-5 text-blue-600" /> 
+          <span className="text-lg font-medium">Concert</span>
         </label>
-        <label className="ml-4">
-          <input
-            type="radio"
-            name="type"
-            value="venue"
-            checked={type === 'venue'}
-            onChange={() => setType('venue')}
-          /> Venue
+        <label className="flex items-center cursor-pointer">
+          <input type="radio" name="type" value="venue" checked={type === 'venue'} onChange={() => setType('venue')} className="mr-2 h-5 w-5 text-blue-600" /> 
+          <span className="text-lg font-medium">Venue</span>
         </label>
       </div>
 
-      {/* --- CONCERT FORM --- */}
       {type === 'concert' && (
-        <div className="space-y-2 p-4 border rounded">
-          <h3 className="text-xl">New Concert</h3>
-          <input name="artist" onChange={handleChange} placeholder="Artist (Required)" required />
-          <input name="date" type="date" onChange={handleChange} required />
-          {/* This is the searchable dropdown for venues */}
-          <select name="venueId" onChange={handleChange} required>
-            <option value="">Select a venue...</option>
-            {venues.map(venue => (
-              <option key={venue.id} value={venue.id}>
-                {venue.name} ({venue.city})
-              </option>
-            ))}
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input name="artist" onChange={handleChange} placeholder="Artist Name *" className="border p-3 rounded w-full" required />
+            <input name="date" type="date" onChange={handleChange} className="border p-3 rounded w-full" required />
+          </div>
+          
+          <select name="venueId" onChange={handleChange} className="border p-3 rounded w-full" required>
+            <option value="">Select Venue *</option>
+            {venues.map(v => <option key={v.id} value={v.id}>{v.name} ({v.city})</option>)}
           </select>
-          <select name="type" onChange={handleChange} defaultValue="concert">
-             <option value="concert">Concert</option>
-             <option value="festival">Festival</option>
-          </select>
-          <input name="eventName" onChange={handleChange} placeholder="Event Name (Optional)" />
-          <input name="setlist" onChange={handleChange} placeholder="Setlist.fm Link (Optional)" />
-          <textarea name="notes" onChange={handleChange} placeholder="Notes (Optional)" />
+          
+          <input name="eventName" onChange={handleChange} placeholder="Tour / Event Name (Optional)" className="border p-3 rounded w-full" />
+          
+          {/* IMAGE FIELDS */}
+          <div className="p-4 bg-gray-50 rounded border border-gray-200 space-y-3">
+            <h3 className="font-bold text-gray-700">Images</h3>
+            
+            {/* Main Image */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">Main Hero Image URL</label>
+              <input name="imageUrl" onChange={handleChange} placeholder="https://..." className="border p-2 rounded w-full" />
+            </div>
+
+            {/* Gallery */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-600 mb-1">Gallery Images</label>
+              <div className="flex space-x-2">
+                <input 
+                  value={galleryInput} 
+                  onChange={(e) => setGalleryInput(e.target.value)} 
+                  placeholder="Paste image URL" 
+                  className="border p-2 rounded flex-grow" 
+                />
+                <button type="button" onClick={addGalleryImage} className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">Add</button>
+              </div>
+              
+              {/* Gallery Preview List */}
+              {formData.gallery && formData.gallery.length > 0 && (
+                <div className="mt-2 space-y-2">
+                  {formData.gallery.map((url, idx) => (
+                    <div key={idx} className="flex items-center justify-between bg-white p-2 rounded border text-sm">
+                      <span className="truncate max-w-xs">{url}</span>
+                      <button type="button" onClick={() => removeGalleryImage(idx)} className="text-red-500 hover:text-red-700 text-xs font-bold">Remove</button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <input name="setlist" onChange={handleChange} placeholder="Setlist.fm Link" className="border p-3 rounded w-full" />
+          <textarea name="notes" onChange={handleChange} placeholder="Notes / Memories..." className="border p-3 rounded w-full h-32" />
         </div>
       )}
 
-      {/* --- VENUE FORM --- */}
       {type === 'venue' && (
-        <div className="space-y-2 p-4 border rounded">
-          <h3 className="text-xl">New Venue</h3>
-          <input name="name" onChange={handleChange} placeholder="Venue Name (Required)" required />
-          <input name="city" onChange={handleChange} placeholder="City (Required)" required />
-          <input name="latitude" type="number" step="0.000001" onChange={handleChange} placeholder="Latitude (Required)" required />
-          <input name="longitude" type="number" step="0.000001" onChange={handleChange} placeholder="Longitude (Required)" required />
+        <div className="space-y-4">
+            <input name="name" onChange={handleChange} placeholder="Venue Name *" className="border p-3 rounded w-full" required />
+            <input name="city" onChange={handleChange} placeholder="City *" className="border p-3 rounded w-full" required />
+            <div className="grid grid-cols-2 gap-4">
+                <input name="latitude" type="number" step="any" onChange={handleChange} placeholder="Lat *" className="border p-3 rounded w-full" required />
+                <input name="longitude" type="number" step="any" onChange={handleChange} placeholder="Long *" className="border p-3 rounded w-full" required />
+            </div>
         </div>
       )}
 
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+      <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 shadow-lg">
         Save Entry
       </button>
     </form>

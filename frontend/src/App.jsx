@@ -12,6 +12,7 @@ import VenueDetailPage from './pages/VenueDetailPage';
 import ArtistDetailPage from './pages/ArtistDetailPage';
 import StatsPage from './pages/StatsPage';
 import AdminDashboard from './pages/AdminDashboard';
+import ConcertDetailPage from './pages/ConcertDetailPage'; // Import New Page
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -31,36 +32,16 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/stats" element={<StatsPage />} />
-          
-          {/* Updated to use :slug */}
           <Route path="/venues/:slug" element={<VenueDetailPage />} />
           <Route path="/artists/:slug" element={<ArtistDetailPage />} />
+          
+          {/* NEW: Concert Detail Page */}
+          <Route path="/concerts/:id" element={<ConcertDetailPage />} />
 
           {/* --- Protected Routes --- */}
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/create"
-            element={
-              <ProtectedRoute>
-                <CreatePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/edit/:type/:id"
-            element={
-              <ProtectedRoute>
-                <EditPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/create" element={<ProtectedRoute><CreatePage /></ProtectedRoute>} />
+          <Route path="/edit/:type/:id" element={<ProtectedRoute><EditPage /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
