@@ -14,7 +14,9 @@ function CreatePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/venues').then(res => setVenues(res.data));
+    axios.get('/api/venues')
+      .then(res => setVenues(res.data))
+      .catch(err => console.error(err));
   }, []);
 
   const handleChange = (e) => {
@@ -38,24 +40,58 @@ function CreatePage() {
     setFormData({ ...formData, gallery: newGallery });
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
+      // 1. Clone the form data
       const payload = { ...formData };
+
+      // 2. CONCERT CLEANUP
       if (type === 'concert') {
         payload.type = payload.type || 'concert';
         if (payload.venueId) payload.venueId = parseInt(payload.venueId);
         // Ensure gallery is array
         if (!payload.gallery) payload.gallery = [];
+        delete payload.venue; // Remove nested object if present
       }
+
+      // 3. VENUE CLEANUP (Critical Fixes)
       if (type === 'venue') {
-        payload.latitude = parseFloat(payload.latitude) || 0;
-        payload.longitude = parseFloat(payload.longitude) || 0;
+        // Ensure lat/long are Floats, default to 0.0 if missing/invalid
+        // This prevents "Invalid Decimal" errors in Prisma
+        payload.latitude = payload.latitude ? parseFloat(payload.latitude) : 0.0;
+        payload.longitude = payload.longitude ? parseFloat(payload.longitude) : 0.0;
+
+        // Ensure name is present
+        if (!payload.name) {
+          alert("Venue name is required");
+          return;
+        }
+
+        // REMOVE CONCERT-SPECIFIC FIELDS
+        // The Venue model does not have these fields, so sending them causes a crash.
+        delete payload.gallery;
+        delete payload.imageUrl; 
+        delete payload.artist;
+        delete payload.date;
+        delete payload.venueId;
+        delete payload.type;
+        delete payload.eventName;
+        delete payload.setlist;
+        delete payload.notes;
       }
+
+      // 4. Send Request
       await axios.post(`/api/create/${type}`, payload);
+      
+      // 5. Success
       navigate('/');
+
     } catch (err) {
-      alert(`Error: ${err.response?.data?.message || err.message}`);
+      console.error('Failed to create entry', err);
+      const message = err.response?.data?.message || err.message;
+      alert(`Error: ${message}`);
     }
   };
 

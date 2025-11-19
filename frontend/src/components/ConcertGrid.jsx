@@ -11,8 +11,8 @@ function ConcertCard({ concert, onConcertDeleted }) {
     ? dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) 
     : 'Invalid Date';
 
-  const handleDelete = async (e) => {
-    e.preventDefault(); // Prevent link navigation
+  const handleDelete = async () => {
+    // No need for e.preventDefault() here if the button is not inside a Link
     if (window.confirm(`Delete show for ${concert.artist}?`)) {
       try {
         await axios.delete(`/api/delete/concert/${concert.id}`);
@@ -25,55 +25,56 @@ function ConcertCard({ concert, onConcertDeleted }) {
   };
 
   return (
-    <Link to={`/concerts/${concert.id}`} className="group block h-full">
-      <div className="border rounded-lg shadow-md bg-white flex flex-col justify-between h-full overflow-hidden hover:shadow-xl transition duration-300">
-        
-        {/* IMAGE HERO */}
-        <div className="h-48 bg-gray-200 relative overflow-hidden">
-          {concert.imageUrl ? (
-            <img 
-              src={concert.imageUrl} 
-              alt={concert.artist} 
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-              No Image
-            </div>
-          )}
-          <div className="absolute top-2 right-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
-             {formattedDate}
+    <div className="border rounded-lg shadow-md bg-white flex flex-col justify-between h-full overflow-hidden hover:shadow-xl transition duration-300 group">
+      
+      {/* IMAGE HERO - Make this clickable */}
+      <Link to={`/concerts/${concert.id}`} className="block h-48 bg-gray-200 relative overflow-hidden">
+        {concert.imageUrl ? (
+          <img 
+            src={concert.imageUrl} 
+            alt={concert.artist} 
+            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+            No Image
           </div>
+        )}
+        <div className="absolute top-2 right-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
+           {formattedDate}
+        </div>
+      </Link>
+
+      <div className="p-4 flex flex-col flex-grow">
+        <div>
+          {/* TITLE - Make this clickable */}
+          <h3 className="text-xl font-bold text-gray-900 truncate">
+            <Link to={`/concerts/${concert.id}`} className="group-hover:text-blue-600">
+              {concert.artist}
+            </Link>
+          </h3>
+          {concert.eventName && <p className="text-sm font-semibold text-blue-500">{concert.eventName}</p>}
+          
+          <p className="text-gray-600 text-sm mt-1">
+            {concert.venue.name}
+          </p>
         </div>
 
-        <div className="p-4 flex flex-col flex-grow">
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 truncate">
-              {concert.artist}
-            </h3>
-            {concert.eventName && <p className="text-sm font-semibold text-blue-500">{concert.eventName}</p>}
-            
-            <p className="text-gray-600 text-sm mt-1">
-              {concert.venue.name}
-            </p>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
-             <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">
-               {concert.venue.city}
-             </span>
-             
-             {/* Admin Actions */}
-             {isAuthenticated && (
-               <div className="flex space-x-2" onClick={(e) => e.preventDefault()}>
-                  <Link to={`/edit/concert/${concert.id}`} className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded hover:bg-yellow-200">Edit</Link>
-                  <button onClick={handleDelete} className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200">Delete</button>
-               </div>
-             )}
-          </div>
+        <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+           <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">
+             {concert.venue.city}
+           </span>
+           
+           {/* Admin Actions - Now safe because they are not inside the main Link */}
+           {isAuthenticated && (
+             <div className="flex space-x-2">
+                <Link to={`/edit/concert/${concert.id}`} className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded hover:bg-yellow-200">Edit</Link>
+                <button onClick={handleDelete} className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200">Delete</button>
+             </div>
+           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

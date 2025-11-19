@@ -1,6 +1,8 @@
 # jimbos-show-log
 
-This app requires an .env file in the root directory with the following variables. Replace username, password, dbname, email, secret and email with real values.
+This app requires an .env file in the root directory and backend directory with the following variables. Replace username, password, dbname, email, secret and email with real values.
+
+In the backend directory, DATABASE_URL should be the Prisma connection string.
 
 DATABASE_URL="postgresql://username:password@localhost:5432/dbname"
 JWT_SECRET="secret"
