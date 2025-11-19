@@ -1,5 +1,5 @@
 {
-  "name": "jimbos-show-log-root",
+  "name": "jimbos-show-log",
   "version": "1.0.0",
   "scripts": {
     "install:all": "npm install --prefix backend && npm install --prefix frontend",
@@ -8,9 +8,15 @@
     "start:frontend": "cd frontend && npm run dev",
     "start:db": "cd backend && npx prisma dev && npx prisma studio",
     
-    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:db\" --names \"SERVER,CLIENT,DB-UI\" --prefix-colors \"blue,magenta,green\""
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:db\" --names \"SERVER,CLIENT,DB-UI\" --prefix-colors \"blue,magenta,green\"",
+
+    "docker:up": "docker-compose --env-file .env.docker up -d --build",
+    "docker:down": "docker-compose --env-file .env.docker down",
+    "docker:logs": "docker-compose --env-file .env.docker logs -f",
+    "docker:reset": "docker-compose --env-file .env.docker down -v && docker-compose --env-file .env.docker up -d --build",
+    "docker:seed": "docker-compose --env-file .env.docker exec backend npx prisma db seed"
   },
   "devDependencies": {
-    "concurrently": "^9.0.0"
+    "concurrently": "^9.2.1"
   }
 }
