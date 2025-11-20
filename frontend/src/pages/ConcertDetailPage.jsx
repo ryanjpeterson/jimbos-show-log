@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { getImageUrl } from '../utils/imageUtils';
 
 function ConcertDetailPage() {
   const { id } = useParams();
@@ -30,7 +31,7 @@ function ConcertDetailPage() {
     <div className="container mx-auto p-4 max-w-5xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="relative h-96 rounded-xl overflow-hidden shadow-xl bg-gray-100">
-          {concert.imageUrl ? <img src={concert.imageUrl} alt={concert.artist} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-gray-400">No Main Image</div>}
+          {concert.imageUrl ? <img src={getImageUrl(concert.imageUrl)} alt={concert.artist} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-gray-400">No Main Image</div>}
         </div>
         <div className="flex flex-col justify-center space-y-4">
           <div className="flex justify-between items-start">
@@ -50,12 +51,12 @@ function ConcertDetailPage() {
       </div>
       {concert.notes && <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mb-12"><h3 className="text-xl font-bold mb-4 text-gray-800">My Notes</h3><p className="text-gray-600 leading-relaxed whitespace-pre-wrap">{concert.notes}</p></div>}
       {concert.gallery && concert.gallery.length > 0 && (
-        <div className="mb-12"><h3 className="text-2xl font-bold mb-6 text-gray-800">Gallery</h3><div className="grid grid-cols-2 md:grid-cols-4 gap-4">{concert.gallery.map((img, idx) => <div key={idx} className="h-48 rounded-lg overflow-hidden cursor-pointer shadow hover:opacity-90 transition" onClick={() => setSelectedImage(img)}><img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover" /></div>)}</div></div>
+        <div className="mb-12"><h3 className="text-2xl font-bold mb-6 text-gray-800">Gallery</h3><div className="grid grid-cols-2 md:grid-cols-4 gap-4">{concert.gallery.map((img, idx) => <div key={idx} className="h-48 rounded-lg overflow-hidden cursor-pointer shadow hover:opacity-90 transition" onClick={() => setSelectedImage(img)}><img src={getImageUrl(img)} alt={`Gallery ${idx}`} className="w-full h-full object-cover" /></div>)}</div></div>
       )}
       {concert.relatedConcerts?.length > 0 && (
         <div className="mt-16 pt-8 border-t border-gray-200"><h3 className="text-2xl font-bold mb-6 text-gray-800">Also played at {concert.venue.name} on this day</h3><div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">{concert.relatedConcerts.map(related => <Link key={related.id} to={`/concerts/${related.id}`} className="block p-4 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition"><div className="flex items-center justify-between"><span className="font-bold text-lg text-gray-900 truncate">{related.artist}</span><span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md uppercase font-semibold">{related.type}</span></div><div className="text-sm text-blue-500 mt-2 font-medium">View Details &rarr;</div></Link>)}</div></div>
       )}
-      {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}><img src={selectedImage} alt="Full size" className="max-h-full max-w-full rounded shadow-2xl" /><button className="absolute top-4 right-4 text-white text-4xl">&times;</button></div>}
+      {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}><img src={getImageUrl(selectedImage)} alt="Full size" className="max-h-full max-w-full rounded shadow-2xl" /><button className="absolute top-4 right-4 text-white text-4xl">&times;</button></div>}
     </div>
   );
 }

@@ -1,20 +1,15 @@
 services:
-  # 1. The Database
   db:
     image: postgres:15-alpine
     container_name: jimbos-show-log-postgresdb
     restart: always
-    environment:
-      # Use variables from your root .env file
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+    env_file:
+      - .env.docker
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - jimbos-network
 
-  # 2. The Backend API
   backend:
     build: ./backend
     container_name: jimbos_backend
@@ -24,17 +19,14 @@ services:
     env_file:
       - .env.docker
     environment:
-      # Construct the URL dynamically using variables from .env.docker
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-      JWT_SECRET: ${JWT_SECRET}
       PORT: 3000
-      DATABASE_USERNAME: ${ADMIN_USERNAME}
-      DATABASE_EMAIL: ${ADMIN_EMAIL}
-      DATABASE_PASSWORD: ${ADMIN_PASSWORD}
+      NODE_ENV: production
+    volumes:
+      - uploads_data:/app/uploads
     networks:
       - jimbos-network
 
-  # 3. The Frontend (Nginx + React)
   frontend:
     build: ./frontend
     container_name: jimbos_frontend
@@ -43,11 +35,14 @@ services:
       - "1995:80"
     depends_on:
       - backend
+    volumes:
+      - uploads_data:/usr/share/nginx/html/uploads
     networks:
       - jimbos-network
 
 volumes:
   postgres_data:
+  uploads_data:
 
 networks:
   jimbos-network:

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../utils/imageUtils';
 
 function ConcertCard({ concert }) {
   const dateObj = new Date(concert.date);
@@ -16,9 +17,9 @@ function ConcertCard({ concert }) {
             <div className="h-48 bg-gray-50 relative overflow-hidden">
             {concert.imageUrl ? (
                 <img 
-                src={concert.imageUrl} 
-                alt={concert.artist} 
-                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  src={getImageUrl(concert.imageUrl)} 
+                  alt={concert.artist} 
+                  className="w-full h-full object-cover..." 
                 />
             ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-300 text-sm font-medium">

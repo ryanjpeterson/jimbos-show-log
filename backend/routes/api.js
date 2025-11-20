@@ -2,7 +2,10 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const slugify = require('slugify'); // Required for generating URL-friendly names
+const slugify = require('slugify');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const authMiddleware = require('../middleware/auth');
 
 const router = express.Router();
@@ -548,6 +551,69 @@ router.post('/import', authMiddleware, async (req, res) => {
       error: error.message 
     });
   }
+});
+
+// --- FILE UPLOAD SETUP ---
+const isDocker = process.env.NODE_ENV === 'production' || fs.existsSync('/.dockerenv');
+const uploadBaseDir = isDocker ? '/app/uploads' : path.join(__dirname, '../uploads'); 
+
+if (!fs.existsSync(uploadBaseDir)) fs.mkdirSync(uploadBaseDir, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: async function (req, file, cb) {
+    const concertId = parseInt(req.body.concertId);
+    if (!concertId) return cb(new Error("Missing concertId"));
+    
+    try {
+        const concert = await prisma.concert.findUnique({ where: { id: concertId }, select: { date: true, artist: true } });
+        if (!concert) return cb(new Error("Concert not found"));
+
+        const datePart = new Date(concert.date).toISOString().slice(0, 10).replace(/-/g, '');
+        const artistSlug = slugify(concert.artist, { lower: true, strict: true });
+        const dir = path.join(uploadBaseDir, `${datePart}-${artistSlug}`);
+        
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        cb(null, dir);
+    } catch (error) { cb(error); }
+  },
+  filename: async function (req, file, cb) {
+    const concertId = parseInt(req.body.concertId);
+    try {
+        const concert = await prisma.concert.findUnique({ where: { id: concertId }, select: { gallery: true, imageUrl: true, date: true, artist: true } });
+        const nextNum = (concert.gallery || []).length + (concert.imageUrl ? 1 : 0) + 1;
+        
+        const datePart = new Date(concert.date).toISOString().slice(0, 10).replace(/-/g, '');
+        const artistSlug = slugify(concert.artist, { lower: true, strict: true });
+        const ext = path.extname(file.originalname).toLowerCase();
+        
+        cb(null, `${datePart}-${artistSlug}-${nextNum}${ext}`);
+    } catch (error) { cb(error); }
+  }
+});
+
+const upload = multer({ 
+  storage: storage, limits: { fileSize: 20 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) cb(null, true);
+    else cb(new Error('Images/Videos only.'));
+  }
+});
+
+router.post('/upload', authMiddleware, upload.single('file'), async (req, res) => {
+  if (!req.file) return res.status(400).json({ message: 'No file uploaded.' });
+
+  const concertId = parseInt(req.body.concertId);
+  const isMainImage = req.body.isMainImage === 'true';
+  
+  // Create relative URL
+  const subpath = req.file.destination.substring(uploadBaseDir.length);
+  const fileUrl = path.join('/uploads', subpath, req.file.filename).replace(/\\/g, '/');
+
+  try {
+    if (isMainImage) await prisma.concert.update({ where: { id: concertId }, data: { imageUrl: fileUrl } });
+    else await prisma.concert.update({ where: { id: concertId }, data: { gallery: { push: fileUrl } } });
+    res.json({ url: fileUrl });
+  } catch (error) { res.status(500).json({ message: 'Saved to disk but failed DB update.' }); }
 });
 
 module.exports = router;
