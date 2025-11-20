@@ -5,42 +5,67 @@ import { useNavigate } from 'react-router-dom';
 function CreatePage() {
   const [type, setType] = useState('concert');
   const [venues, setVenues] = useState([]);
-  const [formData, setFormData] = useState({ gallery: [] });
-  const [galleryInput, setGalleryInput] = useState(''); 
+  const [formData, setFormData] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/venues').then(res => setVenues(res.data));
+    axios.get('/api/venues')
+      .then(res => setVenues(res.data))
+      .catch(err => console.error(err));
   }, []);
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const addGalleryImage = () => {
-    if (galleryInput) { setFormData({ ...formData, gallery: [...(formData.gallery || []), galleryInput] }); setGalleryInput(''); }
-  };
-  const removeGalleryImage = (index) => {
-    const newGallery = [...formData.gallery]; newGallery.splice(index, 1); setFormData({ ...formData, gallery: newGallery });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       const payload = { ...formData };
+
+      // 1. CONCERT CLEANUP
       if (type === 'concert') {
         payload.type = payload.type || 'concert';
         if (payload.venueId) payload.venueId = parseInt(payload.venueId);
-        if (!payload.gallery) payload.gallery = [];
-        delete payload.venue;
+        // No gallery/image fields sent on create
       }
+
+      // 2. VENUE CLEANUP
       if (type === 'venue') {
         payload.latitude = payload.latitude ? parseFloat(payload.latitude) : 0.0;
         payload.longitude = payload.longitude ? parseFloat(payload.longitude) : 0.0;
-        if (!payload.name) return alert("Venue name required");
-        delete payload.gallery; delete payload.imageUrl; delete payload.artist; delete payload.date; delete payload.venueId; delete payload.type; delete payload.eventName; delete payload.setlist; delete payload.notes;
+
+        if (!payload.name) {
+          alert("Venue name is required");
+          return;
+        }
+        // Remove unnecessary fields
+        delete payload.artist;
+        delete payload.date;
+        delete payload.venueId;
+        delete payload.type;
+        delete payload.eventName;
+        delete payload.setlist;
+        delete payload.notes;
       }
-      await axios.post(`/api/create/${type}`, payload);
-      navigate('/');
-    } catch (err) { alert(`Error: ${err.response?.data?.message || err.message}`); }
+
+      // 3. Send Request
+      const res = await axios.post(`/api/create/${type}`, payload);
+      
+      // 4. Smart Redirect
+      if (type === 'concert') {
+          // Redirect to Edit Page to allow image uploads immediately
+          navigate(`/edit/concert/${res.data.id}`);
+      } else {
+          navigate('/');
+      }
+
+    } catch (err) {
+      console.error('Failed to create entry', err);
+      const message = err.response?.data?.message || err.message;
+      alert(`Error: ${message}`);
+    }
   };
 
   return (
@@ -67,24 +92,21 @@ function CreatePage() {
             </div>
             
             <select name="venueId" onChange={handleChange} className="border border-gray-300 p-3 rounded-lg w-full" required>
-              <option value="">Select Venue *</option>{venues.map(v => <option key={v.id} value={v.id}>{v.name} ({v.city})</option>)}
+              <option value="">Select Venue *</option>
+              {venues.map(v => <option key={v.id} value={v.id}>{v.name} ({v.city})</option>)}
             </select>
             
             <input name="eventName" onChange={handleChange} placeholder="Tour / Event Name (Optional)" className="border border-gray-300 p-3 rounded-lg w-full" />
             
-            {/* IMAGE FIELDS */}
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 space-y-3">
-              <h3 className="font-bold text-gray-700">Images</h3>
-              
-              <div><label className="block text-sm font-semibold text-gray-600 mb-1">Main Hero Image URL</label><input name="imageUrl" onChange={handleChange} placeholder="https://..." className="border border-gray-300 p-2 rounded-md w-full" /></div>
-              
-              <div><label className="block text-sm font-semibold text-gray-600 mb-1">Gallery Images</label>
-                <div className="flex space-x-2">
-                  <input value={galleryInput} onChange={(e) => setGalleryInput(e.target.value)} placeholder="Paste image URL" className="border border-gray-300 p-2 rounded-md flex-grow" />
-                  <button type="button" onClick={addGalleryImage} className="text-xs bg-gray-100 text-gray-600 px-3 py-2 rounded-md uppercase font-semibold hover:bg-gray-200 transition shadow-sm">Add</button>
-                </div>
-                
-                {formData.gallery?.length > 0 && <div className="mt-2 space-y-2">{formData.gallery.map((url, idx) => <div key={idx} className="flex items-center justify-between bg-white p-2 rounded border border-gray-200 text-sm"><span className="truncate max-w-xs">{url}</span><button type="button" onClick={() => removeGalleryImage(idx)} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md uppercase font-semibold hover:bg-red-50 hover:text-red-600 transition">Remove</button></div>)}</div>}
+            {/* MEDIA PLACEHOLDER - Explains the workflow */}
+            <div className="p-6 bg-gray-50 rounded-lg border border-gray-200 border-dashed text-center">
+              <div className="text-3xl mb-2">📸</div>
+              <h3 className="font-bold text-gray-700 mb-1">Media Uploads</h3>
+              <p className="text-sm text-gray-500 mb-4">
+                To ensure correct file naming and folder structure, please save the concert details first.
+              </p>
+              <div className="text-xs font-semibold text-blue-600 bg-blue-50 inline-block px-3 py-1 rounded-full">
+                Uploads unlock after saving
               </div>
             </div>
 
@@ -106,8 +128,9 @@ function CreatePage() {
           </div>
         )}
 
-        <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
-          Save Entry
+        <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg shadow-md hover:bg-blue-700 transition flex justify-center items-center gap-2">
+          {type === 'concert' ? 'Save & Add Images' : 'Save Venue'}
+          {type === 'concert' && <span>→</span>}
         </button>
       </form>
     </div>

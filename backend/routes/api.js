@@ -11,582 +11,41 @@ const authMiddleware = require('../middleware/auth');
 const router = express.Router();
 const prisma = new PrismaClient();
 
-// Helper to create consistent slugs
-const createSlug = (text) => slugify(text, { lower: true, strict: true });
-
-// ==========================================
-// PUBLIC GET ROUTES
-// ==========================================
-
-// GET / - All concerts (for the homepage grid)
-router.get('/', async (req, res) => {
-  try {
-    const concerts = await prisma.concert.findMany({
-      include: { venue: true },
-      orderBy: { date: 'desc' },
-    });
-    res.json(concerts);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /concerts/:id - Single concert by ID + Related Shows
-router.get('/concerts/:id', async (req, res) => {
-  try {
-    const concertId = parseInt(req.params.id);
-    
-    // 1. Fetch the main concert
-    const concert = await prisma.concert.findUnique({
-      where: { id: concertId },
-      include: { venue: true },
-    });
-
-    if (!concert) return res.status(404).json({ message: "Concert not found" });
-
-    // 2. Fetch related concerts (Same Date AND Same Venue, excluding self)
-    const startOfDay = new Date(concert.date);
-    startOfDay.setUTCHours(0,0,0,0);
-    
-    const endOfDay = new Date(concert.date);
-    endOfDay.setUTCHours(23,59,59,999);
-
-    const relatedConcerts = await prisma.concert.findMany({
-      where: {
-        venueId: concert.venueId,
-        date: {
-          gte: startOfDay,
-          lte: endOfDay
-        },
-        id: { not: concertId } // Exclude the current concert
-      },
-      orderBy: { artist: 'asc' }, // Alphabetical order for line-ups
-      select: {
-        id: true,
-        artist: true,
-        artistSlug: true,
-        type: true
-      }
-    });
-
-    // 3. Attach related concerts to response
-    res.json({ ...concert, relatedConcerts });
-    
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /venues - All venues (Used for the dropdown in Create/Edit pages)
-router.get('/venues', async (req, res) => {
-  try {
-    const venues = await prisma.venue.findMany({
-      orderBy: { name: 'asc' }
-    });
-    res.json(venues);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /venues/id/:id - Specific route for fetching by ID (Used by EditPage)
-router.get('/venues/id/:id', async (req, res) => {
-  try {
-    const venue = await prisma.venue.findUnique({
-      where: { id: parseInt(req.params.id) }, // Lookup by ID
-    });
-    if (!venue) return res.status(404).json({ message: "Venue not found" });
-    res.json(venue);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /venues/:slug - Single venue by Slug + its concerts
-router.get('/venues/:slug', async (req, res) => {
-  try {
-    const { slug } = req.params;
-    const venue = await prisma.venue.findUnique({
-      where: { slug: slug }, // Lookup by SLUG, not ID
-      include: {
-        concerts: {
-          orderBy: { date: 'desc' },
-          include: { venue: true } // Include venue info so the grid can link back if needed
-        },
-      },
-    });
-    
-    if (!venue) return res.status(404).json({ message: "Venue not found" });
-    res.json(venue);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /artists/:slug - All concerts by a specific artist (via artistSlug)
-router.get('/artists/:slug', async (req, res) => {
-  try {
-    const { slug } = req.params;
-    const concerts = await prisma.concert.findMany({
-      where: { artistSlug: slug }, // Lookup by artistSlug column
-      include: { venue: true },
-      orderBy: { date: 'desc' },
-    });
-    res.json(concerts);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /concerts/today - "On This Day" logic
-router.get('/concerts/today', async (req, res) => {
-  try {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-    
-    const concerts = await prisma.$queryRaw`
-      SELECT c.*, v.name as "venueName", v.city as "venueCity", v.slug as "venueSlug"
-      FROM "Concert" c
-      JOIN "Venue" v ON c."venueId" = v.id
-      WHERE EXTRACT(MONTH FROM date) = ${month}
-        AND EXTRACT(DAY FROM date) = ${day}
-        AND EXTRACT(YEAR FROM date) < ${today.getFullYear()}
-      ORDER BY date DESC
-    `;
-    
-    // Map raw results to match standard shape if needed, or send as is
-    res.json(concerts);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
-  }
-});
-
-// GET /stats
-router.get('/stats', async (req, res) => {
-  try {
-    // 1. Existing queries
-    const totalConcerts = prisma.concert.count();
-
-    const firstShow = prisma.concert.findFirst({
-      orderBy: { date: 'asc' },
-      include: { venue: true },
-    });
-
-    const latestShow = prisma.concert.findFirst({
-      orderBy: { date: 'desc' },
-      include: { venue: true },
-    });
-
-    const topArtistsRaw = prisma.concert.groupBy({
-      by: ['artist', 'artistSlug'],
-      _count: { artist: true },
-      orderBy: { _count: { artist: 'desc' } },
-      take: 5,
-    });
-
-    const topVenuesRaw = prisma.venue.findMany({
-      include: { _count: { select: { concerts: true } } },
-      orderBy: { concerts: { _count: 'desc' } },
-      take: 5,
-    });
-
-    // --- NEW RAW QUERIES ---
-    
-    // 2. Shows by Year (Extract Year from Date)
-    // We cast to ::int to ensure JavaScript gets a Number, not a BigInt string
-    const showsByYearRaw = prisma.$queryRaw`
-      SELECT EXTRACT(YEAR FROM date)::int as year, COUNT(id)::int as count
-      FROM "Concert"
-      GROUP BY year
-      ORDER BY year DESC
-    `;
-
-    // 3. Shows by City (Join Venue table)
-    const showsByCityRaw = prisma.$queryRaw`
-      SELECT v.city, COUNT(c.id)::int as count
-      FROM "Venue" v
-      JOIN "Concert" c ON v.id = c."venueId"
-      GROUP BY v.city
-      ORDER BY count DESC
-      LIMIT 10
-    `;
-
-    // Run everything in parallel
-    const [
-      total, first, latest, topArtists, topVenues,
-      showsByYear, showsByCity
-    ] = await Promise.all([
-      totalConcerts, firstShow, latestShow, topArtistsRaw, topVenuesRaw,
-      showsByYearRaw, showsByCityRaw
-    ]);
-
-    // Construct response
-    const stats = {
-      totalConcerts: total,
-      firstShow: first,
-      latestShow: latest,
-      topArtists: topArtists.map(a => ({
-        name: a.artist,
-        slug: a.artistSlug,
-        count: a._count.artist,
-      })),
-      topVenues: topVenues.map(v => ({
-        name: v.name,
-        city: v.city,
-        slug: v.slug,
-        count: v._count.concerts,
-      })),
-      // Add the new data to the response
-      showsByYear: showsByYear, 
-      showsByCity: showsByCity
-    };
-
-    res.json(stats);
-
-  } catch (error) {
-    console.error("Failed to get stats:", error);
-    res.status(500).json({ message: "Failed to get stats", error: error.message });
-  }
-});
-
-
-// ==========================================
-// AUTH ROUTES
-// ==========================================
-
-router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  
-  try {
-    const user = await prisma.user.findUnique({ where: { username } });
-    if (!user) return res.status(401).json({ message: 'Invalid credentials' });
-
-    const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) return res.status(401).json({ message: 'Invalid credentials' });
-
-    const token = jwt.sign(
-      { userId: user.id, username: user.username },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    res.json({ token });
-  } catch (error) {
-    res.status(500).json({ message: "Login failed", error: error.message });
-  }
-});
-
-
-// ==========================================
-// PROTECTED ROUTES (Create, Edit, Delete, Import, Export)
-// ==========================================
-
-// EXPORT ROUTE
-router.get('/export', authMiddleware, async (req, res) => {
-  try {
-    const venues = await prisma.venue.findMany({ orderBy: { name: 'asc' } });
-    const concerts = await prisma.concert.findMany({ include: { venue: true }, orderBy: { date: 'asc' } });
-
-    const formattedConcerts = concerts.map(c => ({
-      artist: c.artist,
-      date: c.date,
-      venueName: c.venue.name,
-      type: c.type,
-      eventName: c.eventName,
-      setlist: c.setlist,
-      notes: c.notes,
-      imageUrl: c.imageUrl,
-      gallery: c.gallery
-    }));
-
-    const formattedVenues = venues.map(v => ({
-      name: v.name,
-      city: v.city,
-      address: v.address, // Include address
-      latitude: v.latitude,
-      longitude: v.longitude
-    }));
-
-    const exportData = { venues: formattedVenues, concerts: formattedConcerts };
-
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Content-Disposition', 'attachment; filename=jimbos-show-log-export.json');
-    res.json(exportData);
-  } catch (error) {
-    console.error("Export Error:", error);
-    res.status(500).json({ message: "Failed to export data", error: error.message });
-  }
-});
-
-// POST /create/:type
-router.post('/create/:type', authMiddleware, async (req, res) => {
-  const { type } = req.params;
-
-  try {
-    if (type === 'concert') {
-      const { date, artist, venueId, imageUrl, gallery, ...rest } = req.body;
-      
-      // Create concert AND generate the artistSlug
-      const newConcert = await prisma.concert.create({
-        data: {
-          date: new Date(date),
-          artist,
-          artistSlug: createSlug(artist), // <--- Generate Slug
-          venueId: parseInt(venueId),
-          imageUrl: imageUrl || null,
-          gallery: Array.isArray(gallery) ? gallery : [],
-          ...rest,
-        },
-      });
-      return res.status(201).json(newConcert);
-    } 
-    
-    if (type === 'venue') {
-      const { name, latitude, longitude, address, ...rest } = req.body;
-      
-      // Create venue AND generate the slug
-      const newVenue = await prisma.venue.create({
-        data: {
-          name,
-          slug: createSlug(name), // <--- Generate Slug
-          city: rest.city,
-          address: address || null,
-          latitude: parseFloat(latitude),
-          longitude: parseFloat(longitude),
-          // ...rest
-        },
-      });
-      return res.status(201).json(newVenue);
-    }
-    
-    res.status(400).json({ message: 'Invalid create type' });
-  } catch (error) {
-    // Handle Unique Constraint violation (e.g., Venue slug already exists)
-    if (error.code === 'P2002') {
-      return res.status(409).json({ message: 'A venue with this name/slug already exists.' });
-    }
-    res.status(500).json({ message: 'Creation failed', error: error.message });
-  }
-});
-
-// PUT /edit/:type/:id
-router.put('/edit/:type/:id', authMiddleware, async (req, res) => {
-  const { type, id } = req.params;
-  const data = req.body;
-
-  try {
-    if (type === 'concert') {
-      // Destructure to remove nested 'venue' object and handle specific fields
-      const { venueId, date, venue, imageUrl, gallery, ...rest } = data;
-      
-      // Prepare update data
-      const updateData = {
-        ...rest,
-        date: date ? new Date(date) : undefined,
-        venueId: venueId ? parseInt(venueId) : undefined,
-        imageUrl: imageUrl || null,
-        gallery: Array.isArray(gallery) ? gallery : [],
-      };
-
-      // If artist name is being updated, we must regenerate the slug
-      if (rest.artist) {
-        updateData.artistSlug = createSlug(rest.artist);
-      }
-
-      const updated = await prisma.concert.update({
-        where: { id: parseInt(id) },
-        data: updateData
-      });
-      return res.json(updated);
-    } 
-    
-    else if (type === 'venue') {
-      // Remove 'id' and 'type' so they don't get sent to the DB update
-      const { id: _id, type: _type, latitude, longitude, concerts, address, ...rest } = data; 
-      
-      const updateData = {
-        ...rest,
-        address: address || null,
-        latitude: latitude ? parseFloat(latitude) : undefined,
-        longitude: longitude ? parseFloat(longitude) : undefined,
-      };
-
-      // If venue name changed, regenerate the slug
-      if (rest.name) {
-        updateData.slug = createSlug(rest.name);
-      }
-
-      const updated = await prisma.venue.update({
-        where: { id: parseInt(id) }, // We typically edit venues by ID in the admin panel
-        data: updateData
-      });
-      return res.json(updated);
-    } 
-    
-    res.status(400).json({ message: 'Invalid edit type' });
-
-  } catch (error) {
-    if (error.code === 'P2002') {
-      return res.status(409).json({ message: 'Name collision: This name generates a slug that already exists.' });
-    }
-    if (error.code === 'P2025') {
-      return res.status(404).json({ message: 'Record not found' });
-    }
-    console.error('Update Error:', error);
-    res.status(500).json({ message: 'Update failed', error: error.message });
-  }
-});
-
-// DELETE /delete/:type/:id
-router.delete('/delete/:type/:id', authMiddleware, async (req, res) => {
-  const { type, id } = req.params;
-  
-  try {
-    if (type === 'concert') {
-      await prisma.concert.delete({ where: { id: parseInt(id) } });
-    } else if (type === 'venue') {
-      await prisma.venue.delete({ where: { id: parseInt(id) } });
-    } else {
-      return res.status(400).json({ message: 'Invalid type' });
-    }
-    res.status(204).send();
-    
-  } catch (error) {
-    if (error.code === 'P2003') { 
-      return res.status(409).json({ message: 'Cannot delete venue. It still has associated concerts.' });
-    }
-    res.status(500).json({ message: 'Delete failed', error: error.message });
-  }
-});
-
-// IMPORT ROUTE
-router.post('/import', authMiddleware, async (req, res) => {
-  const { venues = [], concerts = [] } = req.body;
-
-  if (!Array.isArray(venues) || !Array.isArray(concerts)) {
-    return res.status(400).json({ message: "Invalid JSON format: 'venues' and 'concerts' must be arrays." });
-  }
-
-  let importedVenues = 0;
-  let importedConcerts = 0;
-
-  try {
-    // Use a transaction to ensure all or nothing
-    const result = await prisma.$transaction(async (tx) => {
-      
-      // 1. Upsert all Venues first.
-      for (const venue of venues) {
-        if (!venue.name || !venue.city) {
-          throw new Error('Venue missing required field: name or city.');
-        }
-        const slug = createSlug(venue.name);
-        
-        await tx.venue.upsert({
-          where: { slug: slug },
-          update: {
-            name: venue.name,
-            city: venue.city,
-            address: venue.address || null,
-            latitude: parseFloat(venue.latitude) || 0,
-            longitude: parseFloat(venue.longitude) || 0,
-          },
-          create: {
-            name: venue.name,
-            slug: slug,
-            city: venue.city,
-            address: venue.address || null,
-            latitude: parseFloat(venue.latitude) || 0,
-            longitude: parseFloat(venue.longitude) || 0,
-          }
-        });
-        importedVenues++;
-      }
-
-      // 2. Create Concerts
-      for (const concert of concerts) {
-        if (!concert.artist || !concert.date || !concert.venueName) {
-          throw new Error('Concert missing required field: artist, date, or venueName.');
-        }
-
-        // Find the venueId based on the venueName
-        const venueSlug = createSlug(concert.venueName);
-        const foundVenue = await tx.venue.findUnique({
-          where: { slug: venueSlug }
-        });
-
-        if (!foundVenue) {
-          throw new Error(`Venue not found for concert: "${concert.artist}" at "${concert.venueName}". Ensure venue is in the JSON or already in the DB.`);
-        }
-
-        // Create the concert
-        await tx.concert.create({
-          data: {
-            artist: concert.artist,
-            artistSlug: createSlug(concert.artist),
-            date: new Date(concert.date),
-            venueId: foundVenue.id,
-            type: concert.type === 'festival' ? 'festival' : 'concert',
-            eventName: concert.eventName,
-            setlist: concert.setlist,
-            notes: concert.notes,
-            imageUrl: concert.imageUrl || null,
-            gallery: Array.isArray(concert.gallery) ? concert.gallery : []
-          }
-        });
-        importedConcerts++;
-      }
-
-      return { importedVenues, importedConcerts };
-    });
-
-    res.status(200).json({
-      message: `Import successful! Added/updated ${result.importedVenues} venues and ${result.importedConcerts} concerts.`,
-    });
-
-  } catch (error) {
-    console.error("Import Error:", error.message);
-    res.status(400).json({ 
-      message: "Import failed. The entire transaction has been rolled back.",
-      error: error.message 
-    });
-  }
-});
-
-// --- FILE UPLOAD SETUP ---
+// --- DYNAMIC FILE UPLOAD SETUP ---
 const isDocker = process.env.NODE_ENV === 'production' || fs.existsSync('/.dockerenv');
-const uploadBaseDir = isDocker ? '/app/uploads' : path.join(__dirname, '../uploads'); 
+const uploadBaseDir = isDocker 
+    ? '/app/uploads' 
+    : path.join(__dirname, '../uploads'); 
 
-if (!fs.existsSync(uploadBaseDir)) fs.mkdirSync(uploadBaseDir, { recursive: true });
+if (!fs.existsSync(uploadBaseDir)) {
+  fs.mkdirSync(uploadBaseDir, { recursive: true });
+}
+
+const createSlug = (text) => slugify(text, { lower: true, strict: true });
 
 const storage = multer.diskStorage({
   destination: async function (req, file, cb) {
     const concertId = parseInt(req.body.concertId);
-    if (!concertId) return cb(new Error("Missing concertId"));
-    
+    if (!concertId || isNaN(concertId)) return cb(new Error("Missing 'concertId' in upload request."));
     try {
         const concert = await prisma.concert.findUnique({ where: { id: concertId }, select: { date: true, artist: true } });
-        if (!concert) return cb(new Error("Concert not found"));
-
+        if (!concert) return cb(new Error(`Concert ID ${concertId} not found.`));
         const datePart = new Date(concert.date).toISOString().slice(0, 10).replace(/-/g, '');
-        const artistSlug = slugify(concert.artist, { lower: true, strict: true });
-        const dir = path.join(uploadBaseDir, `${datePart}-${artistSlug}`);
-        
-        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-        cb(null, dir);
+        const artistSlug = createSlug(concert.artist);
+        const destinationDir = path.join(uploadBaseDir, `${datePart}-${artistSlug}`);
+        if (!fs.existsSync(destinationDir)) fs.mkdirSync(destinationDir, { recursive: true });
+        cb(null, destinationDir);
     } catch (error) { cb(error); }
   },
   filename: async function (req, file, cb) {
     const concertId = parseInt(req.body.concertId);
     try {
         const concert = await prisma.concert.findUnique({ where: { id: concertId }, select: { gallery: true, imageUrl: true, date: true, artist: true } });
-        const nextNum = (concert.gallery || []).length + (concert.imageUrl ? 1 : 0) + 1;
-        
+        const nextFileNumber = (concert.gallery || []).length + (concert.imageUrl ? 1 : 0) + 1; 
         const datePart = new Date(concert.date).toISOString().slice(0, 10).replace(/-/g, '');
-        const artistSlug = slugify(concert.artist, { lower: true, strict: true });
-        const ext = path.extname(file.originalname).toLowerCase();
-        
-        cb(null, `${datePart}-${artistSlug}-${nextNum}${ext}`);
+        const artistSlug = createSlug(concert.artist);
+        const fileExtension = path.extname(file.originalname).toLowerCase();
+        cb(null, `${datePart}-${artistSlug}-${nextFileNumber}${fileExtension}`);
     } catch (error) { cb(error); }
   }
 });
@@ -595,25 +54,250 @@ const upload = multer({
   storage: storage, limits: { fileSize: 20 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) cb(null, true);
-    else cb(new Error('Images/Videos only.'));
+    else cb(new Error('Only images and videos are allowed.'));
   }
+});
+
+// --- ROUTES ---
+
+router.get('/', async (req, res) => {
+  try {
+    const concerts = await prisma.concert.findMany({ include: { venue: true }, orderBy: { date: 'desc' } });
+    res.json(concerts);
+  } catch (error) { res.status(500).json({ message: "Server Error", error: error.message }); }
+});
+
+router.get('/concerts/:id', async (req, res) => {
+  try {
+    const concertId = parseInt(req.params.id);
+    const concert = await prisma.concert.findUnique({ where: { id: concertId }, include: { venue: true } });
+    if (!concert) return res.status(404).json({ message: "Concert not found" });
+
+    const startOfDay = new Date(concert.date); startOfDay.setUTCHours(0,0,0,0);
+    const endOfDay = new Date(concert.date); endOfDay.setUTCHours(23,59,59,999);
+
+    const relatedConcerts = await prisma.concert.findMany({
+      where: { venueId: concert.venueId, date: { gte: startOfDay, lte: endOfDay }, id: { not: concertId } },
+      orderBy: { artist: 'asc' }, select: { id: true, artist: true, artistSlug: true, type: true }
+    });
+    res.json({ ...concert, relatedConcerts });
+  } catch (error) { res.status(500).json({ message: "Server Error", error: error.message }); }
+});
+
+router.get('/venues', async (req, res) => {
+  try { res.json(await prisma.venue.findMany({ orderBy: { name: 'asc' } })); } 
+  catch (error) { res.status(500).json({ message: "Server Error", error: error.message }); }
+});
+
+router.get('/venues/id/:id', async (req, res) => {
+  try {
+    const venue = await prisma.venue.findUnique({ where: { id: parseInt(req.params.id) } });
+    if (!venue) return res.status(404).json({ message: "Venue not found" });
+    res.json(venue);
+  } catch (error) { res.status(500).json({ message: "Server Error", error: error.message }); }
+});
+
+router.get('/venues/:slug', async (req, res) => {
+  try {
+    const venue = await prisma.venue.findUnique({ where: { slug: req.params.slug }, include: { concerts: { orderBy: { date: 'desc' }, include: { venue: true } } } });
+    if (!venue) return res.status(404).json({ message: "Venue not found" });
+    res.json(venue);
+  } catch (error) { res.status(500).json({ message: "Server Error", error: error.message }); }
+});
+
+router.get('/artists/:slug', async (req, res) => {
+  try {
+    const concerts = await prisma.concert.findMany({ where: { artistSlug: req.params.slug }, include: { venue: true }, orderBy: { date: 'desc' } });
+    res.json(concerts);
+  } catch (error) { res.status(500).json({ message: "Server Error", error: error.message }); }
+});
+
+router.get('/stats', async (req, res) => {
+  try {
+    const [total, first, latest, topArtists, topVenues, showsByYear, showsByCity] = await Promise.all([
+      prisma.concert.count(),
+      prisma.concert.findFirst({ orderBy: { date: 'asc' }, include: { venue: true } }),
+      prisma.concert.findFirst({ orderBy: { date: 'desc' }, include: { venue: true } }),
+      prisma.concert.groupBy({ by: ['artist', 'artistSlug'], _count: { artist: true }, orderBy: { _count: { artist: 'desc' } }, take: 5 }),
+      prisma.venue.findMany({ include: { _count: { select: { concerts: true } } }, orderBy: { concerts: { _count: 'desc' } }, take: 5 }),
+      prisma.$queryRaw`SELECT EXTRACT(YEAR FROM date)::int as year, COUNT(id)::int as count FROM "Concert" GROUP BY year ORDER BY year DESC`,
+      prisma.$queryRaw`SELECT v.city, COUNT(c.id)::int as count FROM "Venue" v JOIN "Concert" c ON v.id = c."venueId" GROUP BY v.city ORDER BY count DESC LIMIT 10`
+    ]);
+    res.json({
+      totalConcerts: total, firstShow: first, latestShow: latest,
+      topArtists: topArtists.map(a => ({ name: a.artist, slug: a.artistSlug, count: a._count.artist })),
+      topVenues: topVenues.map(v => ({ name: v.name, city: v.city, slug: v.slug, count: v._count.concerts })),
+      showsByYear, showsByCity
+    });
+  } catch (error) { res.status(500).json({ message: "Failed to get stats", error: error.message }); }
+});
+
+// --- AUTH & PROTECTED ---
+
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await prisma.user.findUnique({ where: { username } });
+    if (!user || !(await bcrypt.compare(password, user.password))) return res.status(401).json({ message: 'Invalid credentials' });
+    const token = jwt.sign({ userId: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token });
+  } catch (error) { res.status(500).json({ message: "Login failed", error: error.message }); }
+});
+
+router.get('/export', authMiddleware, async (req, res) => {
+  try {
+    const venues = await prisma.venue.findMany({ orderBy: { name: 'asc' } });
+    const concerts = await prisma.concert.findMany({ include: { venue: true }, orderBy: { date: 'asc' } });
+    const exportData = {
+      venues: venues.map(v => ({ name: v.name, city: v.city, address: v.address, latitude: v.latitude, longitude: v.longitude })),
+      concerts: concerts.map(c => ({
+        artist: c.artist, date: c.date, venueName: c.venue.name, type: c.type, eventName: c.eventName, setlist: c.setlist, notes: c.notes, imageUrl: c.imageUrl, gallery: c.gallery
+      }))
+    };
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Disposition', 'attachment; filename=jimbos-show-log-export.json');
+    res.json(exportData);
+  } catch (error) { res.status(500).json({ message: "Failed to export data", error: error.message }); }
 });
 
 router.post('/upload', authMiddleware, upload.single('file'), async (req, res) => {
   if (!req.file) return res.status(400).json({ message: 'No file uploaded.' });
-
   const concertId = parseInt(req.body.concertId);
   const isMainImage = req.body.isMainImage === 'true';
-  
-  // Create relative URL
   const subpath = req.file.destination.substring(uploadBaseDir.length);
   const fileUrl = path.join('/uploads', subpath, req.file.filename).replace(/\\/g, '/');
-
   try {
     if (isMainImage) await prisma.concert.update({ where: { id: concertId }, data: { imageUrl: fileUrl } });
     else await prisma.concert.update({ where: { id: concertId }, data: { gallery: { push: fileUrl } } });
     res.json({ url: fileUrl });
-  } catch (error) { res.status(500).json({ message: 'Saved to disk but failed DB update.' }); }
+  } catch (error) { res.status(500).json({ message: 'Upload succeeded, but failed to save URL to database.' }); }
+});
+
+// DELETE UPLOADED FILE
+router.delete('/upload', authMiddleware, async (req, res) => {
+    const { fileUrl, concertId } = req.body;
+    if (!fileUrl) return res.status(400).json({ message: "Missing fileUrl" });
+    if (!fileUrl.startsWith('/uploads/') || fileUrl.includes('..')) return res.status(400).json({ message: "Invalid file path" });
+  
+    // 1. Delete from Disk
+    const relativePath = fileUrl.replace(/^\/uploads/, ''); 
+    const filePath = path.join(uploadBaseDir, relativePath);
+  
+    try {
+      if (fs.existsSync(filePath)) {
+        await fs.promises.unlink(filePath);
+      }
+  
+      // 2. Update Database (Remove reference)
+      if (concertId) {
+          const concert = await prisma.concert.findUnique({ where: { id: parseInt(concertId) } });
+          if (concert) {
+              // Check if it's the main image
+              if (concert.imageUrl === fileUrl) {
+                  await prisma.concert.update({ where: { id: parseInt(concertId) }, data: { imageUrl: null } });
+              } 
+              // Check gallery
+              else if (concert.gallery.includes(fileUrl)) {
+                  const newGallery = concert.gallery.filter(url => url !== fileUrl);
+                  await prisma.concert.update({ where: { id: parseInt(concertId) }, data: { gallery: newGallery } });
+              }
+          }
+      }
+  
+      res.json({ message: "File deleted successfully" });
+    } catch (error) {
+      console.error("Delete file error:", error);
+      res.status(500).json({ message: "Failed to delete file" });
+    }
+});
+
+router.post('/create/:type', authMiddleware, async (req, res) => {
+  const { type } = req.params;
+  try {
+    if (type === 'concert') {
+      const { date, artist, venueId, imageUrl, gallery, ...rest } = req.body;
+      const newConcert = await prisma.concert.create({
+        data: { date: new Date(date), artist, artistSlug: createSlug(artist), venueId: parseInt(venueId), imageUrl: imageUrl || null, gallery: Array.isArray(gallery) ? gallery : [], ...rest },
+      });
+      return res.status(201).json(newConcert);
+    } 
+    if (type === 'venue') {
+      const { name, latitude, longitude, address, ...rest } = req.body;
+      const newVenue = await prisma.venue.create({
+        data: { name, slug: createSlug(name), city: rest.city, address: address || null, latitude: parseFloat(latitude), longitude: parseFloat(longitude) },
+      });
+      return res.status(201).json(newVenue);
+    }
+    res.status(400).json({ message: 'Invalid create type' });
+  } catch (error) {
+    if (error.code === 'P2002') return res.status(409).json({ message: 'Duplicate entry.' });
+    res.status(500).json({ message: 'Creation failed', error: error.message });
+  }
+});
+
+router.put('/edit/:type/:id', authMiddleware, async (req, res) => {
+  const { type, id } = req.params;
+  const data = req.body;
+  try {
+    if (type === 'concert') {
+      const { venueId, date, venue, imageUrl, gallery, ...rest } = data;
+      const updateData = { ...rest, date: date ? new Date(date) : undefined, venueId: venueId ? parseInt(venueId) : undefined, imageUrl: imageUrl || null, gallery: Array.isArray(gallery) ? gallery : [] };
+      if (rest.artist) updateData.artistSlug = createSlug(rest.artist);
+      const updated = await prisma.concert.update({ where: { id: parseInt(id) }, data: updateData });
+      return res.json(updated);
+    } 
+    else if (type === 'venue') {
+      const { id: _id, type: _type, latitude, longitude, concerts, address, ...rest } = data; 
+      const updateData = { ...rest, address: address || null, latitude: latitude ? parseFloat(latitude) : undefined, longitude: longitude ? parseFloat(longitude) : undefined };
+      if (rest.name) updateData.slug = createSlug(rest.name);
+      const updated = await prisma.venue.update({ where: { id: parseInt(id) }, data: updateData });
+      return res.json(updated);
+    } 
+    res.status(400).json({ message: 'Invalid edit type' });
+  } catch (error) { res.status(500).json({ message: 'Update failed', error: error.message }); }
+});
+
+router.delete('/delete/:type/:id', authMiddleware, async (req, res) => {
+  try {
+    if (req.params.type === 'concert') await prisma.concert.delete({ where: { id: parseInt(req.params.id) } });
+    else await prisma.venue.delete({ where: { id: parseInt(req.params.id) } });
+    res.status(204).send();
+  } catch (error) { res.status(500).json({ message: 'Delete failed', error: error.message }); }
+});
+
+router.post('/import', authMiddleware, async (req, res) => {
+  const { venues = [], concerts = [] } = req.body;
+  if (!Array.isArray(venues) || !Array.isArray(concerts)) return res.status(400).json({ message: "Invalid JSON" });
+
+  try {
+    const result = await prisma.$transaction(async (tx) => {
+      let importedVenues = 0, importedConcerts = 0;
+      for (const venue of venues) {
+        const slug = createSlug(venue.name);
+        await tx.venue.upsert({
+          where: { slug },
+          update: { name: venue.name, city: venue.city, address: venue.address || null, latitude: parseFloat(venue.latitude), longitude: parseFloat(venue.longitude) },
+          create: { name: venue.name, slug, city: venue.city, address: venue.address || null, latitude: parseFloat(venue.latitude), longitude: parseFloat(venue.longitude) }
+        });
+        importedVenues++;
+      }
+      for (const concert of concerts) {
+        const venueSlug = createSlug(concert.venueName);
+        const foundVenue = await tx.venue.findUnique({ where: { slug: venueSlug } });
+        if (!foundVenue) throw new Error(`Venue not found: ${concert.venueName}`);
+        await tx.concert.create({
+          data: {
+            artist: concert.artist, artistSlug: createSlug(concert.artist), date: new Date(concert.date), venueId: foundVenue.id,
+            type: concert.type === 'festival' ? 'festival' : 'concert', eventName: concert.eventName, setlist: concert.setlist, notes: concert.notes,
+            imageUrl: concert.imageUrl || null, gallery: Array.isArray(concert.gallery) ? concert.gallery : []
+          }
+        });
+        importedConcerts++;
+      }
+      return { importedVenues, importedConcerts };
+    });
+    res.status(200).json({ message: `Imported ${result.importedVenues} venues and ${result.importedConcerts} concerts.` });
+  } catch (error) { res.status(400).json({ message: "Import failed", error: error.message }); }
 });
 
 module.exports = router;
