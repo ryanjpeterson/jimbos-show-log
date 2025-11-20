@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 function ConcertList({ concerts }) {
@@ -6,7 +7,7 @@ function ConcertList({ concerts }) {
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3 pb-12">
       {concerts.map(concert => {
         const dateObj = new Date(concert.date);
         const formattedDate = !isNaN(dateObj) 
@@ -17,13 +18,12 @@ function ConcertList({ concerts }) {
           <Link 
             key={concert.id} 
             to={`/concerts/${concert.id}`}
-            className="block bg-white border border-gray-200 rounded p-3 hover:bg-gray-50 hover:border-blue-300 transition"
+            className="block bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition"
           >
             <div className="flex justify-between items-center">
               <div className="truncate mr-4">
                 <span className="font-bold text-gray-900">{concert.artist}</span>
-                {/* On mobile, maybe just show artist. On desktop, could show venue too if you wanted */}
-                <span className="hidden sm:inline text-gray-500 text-sm ml-2">- {concert.venue.name}</span>
+                <span className="hidden sm:inline text-gray-500 text-sm ml-2">- {concert.venue.name} ({concert.venue.city})</span>
               </div>
               <div className="text-sm text-gray-600 whitespace-nowrap font-mono">
                 {formattedDate}
